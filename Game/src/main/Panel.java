@@ -23,7 +23,7 @@ public class Panel extends JPanel implements Runnable{
 
     Thread gameThread;
 
-    Player player = new Player(this, input);
+    public Player player = new Player(this, input);
 
     Background bg = new Background(this);
 

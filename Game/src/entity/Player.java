@@ -14,6 +14,7 @@ public class Player extends Entity{
 
     int maxSpeed = 4;
     double diagonalSpeed = speed / sqrt(2);
+    boolean shoot = false;
 
     public Player(Panel panel, Input input){
         this.panel = panel;
@@ -113,6 +114,9 @@ public class Player extends Entity{
                 spriteNum = 1;
             }
             spriteCounter = 0;
+        }
+        if(input.spacePressed == true){
+            shoot = true;
         }
     }
 
