@@ -21,7 +21,7 @@ Panel panel;
 
     public void getBackgroundImage(){
         try {
-            bg = ImageIO.read(getClass().getResourceAsStream("/res/background/background.png"));
+            bg = ImageIO.read(getClass().getResourceAsStream("/background/background.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

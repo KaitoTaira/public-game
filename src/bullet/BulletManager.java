@@ -1,20 +1,22 @@
 package bullet;
 
+import entity.Player;
 import java.awt.Graphics2D;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import main.Panel;
 
-public class BulletManager {
+
+public class BulletManager extends Bullet{
 
     Panel p;
+    Player player;
     Bullet[] bullet;
 
-    public BulletManager(Panel p){
+    public BulletManager(Panel p, Player player){
 
         this.p = p;
+        this.player = player;
         bullet = new Bullet[1];
         getBulletImage();
     }
@@ -22,13 +24,17 @@ public class BulletManager {
     public void getBulletImage(){
         try{
             bullet[0] = new Bullet();
-            bullet[0].image = ImageIO.read(getClass().getResourceAsStream("/res/bullet/bullet.png"));
+            bullet[0].image = ImageIO.read(getClass().getResourceAsStream("/bullet/bullet.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
+
     }
 
     public void draw(Graphics2D g2){
-        g2.drawImage(bullet[0].image,0,0, 1, 2, null);
+        if(player.shoot){
+            g2.drawImage(bullet[0].image, player.x - (p.tileSize/2), player.y - ((p.tileSize/2) + 50), 100, 100, null);
+            System.out.println("PEW");
+        }
     }
 }

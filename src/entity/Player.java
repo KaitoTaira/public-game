@@ -14,7 +14,7 @@ public class Player extends Entity{
 
     int maxSpeed = 4;
     double diagonalSpeed = speed / sqrt(2);
-    boolean shoot = false;
+    public boolean shoot = false;
 
     public Player(Panel panel, Input input){
         this.panel = panel;
@@ -34,19 +34,20 @@ public class Player extends Entity{
 
     public void getPlayerImage(){
         try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/planeup1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/planeup2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/planedown1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/planedown2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/planeleft1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/planeleft2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/planeright1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/planeright2.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/planeup1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/planeup2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/planedown1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/planedown2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/planeleft1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/planeleft2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/planeright1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/planeright2.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
     }
     public void update(){
+
 
         if(input.shiftPressed == true){
             maxSpeed = 2;

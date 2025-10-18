@@ -19,13 +19,14 @@ public class Panel extends JPanel implements Runnable{
     public int drawCount;
 
     int fps = 60;
-
-    BulletManager bullet = new BulletManager(this);
     Input input = new Input();
 
+    public Player player = new Player(this, input);
+    BulletManager bullet = new BulletManager(this, player);
+    
     Thread gameThread;
 
-    public Player player = new Player(this, input);
+    
 
     Background bg = new Background(this);
 
@@ -83,11 +84,10 @@ public class Panel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-
-       bg.draw(g2);
-       bullet.draw(g2);
-       player.draw(g2);
-       g2.dispose();
+        bg.draw(g2);
+        player.draw(g2);
+        bullet.draw(g2);
+        g2.dispose();
        
     }
 }
