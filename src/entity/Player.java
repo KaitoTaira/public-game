@@ -119,6 +119,9 @@ public class Player extends Entity{
         if(input.spacePressed == true){
             shoot = true;
         }
+        if(input.spacePressed == false){
+            shoot = false;
+        }
     }
 
     public void draw(Graphics2D g2){

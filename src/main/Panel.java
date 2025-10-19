@@ -19,9 +19,9 @@ public class Panel extends JPanel implements Runnable{
     public int drawCount;
 
     int fps = 60;
-    Input input = new Input();
 
-    public Player player = new Player(this, input);
+    Input input = new Input();
+    Player player = new Player(this, input);
     BulletManager bullet = new BulletManager(this, player);
     
     Thread gameThread;
@@ -78,6 +78,7 @@ public class Panel extends JPanel implements Runnable{
 
     public void update(){
         player.update();
+        bullet.update();
     }
 
     public void paintComponent(Graphics g){
