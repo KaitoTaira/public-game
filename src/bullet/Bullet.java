@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public class Bullet {
 
     public BufferedImage image;
-    public boolean collision = false;
+    public  boolean collision = false;
     public int bulletx;
     public int bullety;
     public int bulletwidth = 150;
