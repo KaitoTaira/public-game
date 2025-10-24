@@ -21,7 +21,7 @@ public class Bullet {
     }
 
     public void update(){
-        bullety -= 4;
+        bullety -= 8;
         if(bullety < -75){
             bulletActive = false;
         }

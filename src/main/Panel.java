@@ -2,6 +2,7 @@ package main;
 
 import background.Background;
 import bullet.BulletManager;
+import entity.Enemy;
 import entity.Player;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,6 +24,7 @@ public class Panel extends JPanel implements Runnable{
     Input input = new Input();
     Player player = new Player(this, input);
     BulletManager bullet = new BulletManager(this, player);
+    Enemy enemy = new Enemy(this, bullets);
     
     Thread gameThread;
 
@@ -79,6 +81,7 @@ public class Panel extends JPanel implements Runnable{
     public void update(){
         player.update();
         bullet.update();
+        enemy.update();
     }
 
     public void paintComponent(Graphics g){
@@ -88,6 +91,7 @@ public class Panel extends JPanel implements Runnable{
         bg.draw(g2);
         player.draw(g2);
         bullet.draw(g2);
+        enemy.draw(g2);
         g2.dispose();
        
     }

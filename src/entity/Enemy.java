@@ -1,37 +1,47 @@
 package entity;
 
+import bullet.Bullet;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import main.Panel;
 
 public class Enemy extends Entity{
     Panel panel;
+    Bullet bullet;
+    BufferedImage enemyImage;
     
 
-    public Enemy(Panel panel){
+    public Enemy(Panel panel, Bullet bullets){
         this.panel = panel;
+        this.bullet = bullets;
+        getEnemyImage();
+        setDefaultValues();
+    }
+
+    public void update(){
+        y += 3;
+        if(bullet.bulletx == x && bullet.bullety == y){
+            System.out.println("Killed enemy");
+        }
     }
 
     public void getEnemyImage(){
         try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/planeup1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/planeup2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/planedown1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/planedown2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/planeleft1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/planeleft2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/planeright1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/planeright2.png"));
+            enemyImage = ImageIO.read(getClass().getResourceAsStream("/enemy/enemy.png"));
+            System.out.println("Enemy");
         }catch(IOException e){
             e.printStackTrace();
         }
     }
 
     public void setDefaultValues(){
-        x = 
-        y =
-        
+       x = 100;
+       y = -50;
+    }
+
+    public void draw(Graphics2D g2){
+        g2.drawImage(enemyImage, x, y, panel.tileSize, panel.tileSize, null);
     }
 }
