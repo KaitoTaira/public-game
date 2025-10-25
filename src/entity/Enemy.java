@@ -1,6 +1,9 @@
 package entity;
 
 import bullet.Bullet;
+
+import static java.lang.Math.sqrt;
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -11,26 +14,26 @@ public class Enemy extends Entity{
     Panel panel;
     Bullet bullet;
     BufferedImage enemyImage;
+    public double distance = Math.sqrt((bullet.bulletx - x) * (bullet.bulletx - x) + (bullet.bullety - y) * (bullet.bullety - y));
     
 
-    public Enemy(Panel panel, Bullet bullets){
+    public Enemy(Panel panel, Bullet bullet){
         this.panel = panel;
-        this.bullet = bullets;
+        this.bullet = bullet;
         getEnemyImage();
         setDefaultValues();
     }
 
     public void update(){
         y += 3;
-        if(bullet.bulletx == x && bullet.bullety == y){
-            System.out.println("Killed enemy");
+        if(distance <= 5){
+            System.out.println("Enemy");
         }
     }
 
     public void getEnemyImage(){
         try{
             enemyImage = ImageIO.read(getClass().getResourceAsStream("/enemy/enemy.png"));
-            System.out.println("Enemy");
         }catch(IOException e){
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package main;
 
 import background.Background;
+import bullet.Bullet;
 import bullet.BulletManager;
 import entity.Enemy;
 import entity.Player;
@@ -23,8 +24,9 @@ public class Panel extends JPanel implements Runnable{
 
     Input input = new Input();
     Player player = new Player(this, input);
-    BulletManager bullet = new BulletManager(this, player);
-    Enemy enemy = new Enemy(this, bullets);
+    BulletManager bullets = new BulletManager(this, player);
+    Bullet bullet = new Bullet(0, 0, null);
+    Enemy enemy = new Enemy(this, bullet);
     
     Thread gameThread;
 
@@ -80,7 +82,7 @@ public class Panel extends JPanel implements Runnable{
 
     public void update(){
         player.update();
-        bullet.update();
+        bullets.update();
         enemy.update();
     }
 
@@ -90,7 +92,7 @@ public class Panel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         bg.draw(g2);
         player.draw(g2);
-        bullet.draw(g2);
+        bullets.draw(g2);
         enemy.draw(g2);
         g2.dispose();
        

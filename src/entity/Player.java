@@ -3,7 +3,6 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import static java.lang.Math.sqrt;
 import javax.imageio.ImageIO;
 import main.Input;
 import main.Panel;
@@ -12,8 +11,8 @@ public class Player extends Entity{
     Panel panel;
     Input input;
 
-    int maxSpeed = 4;
-    double diagonalSpeed = speed / sqrt(2);
+    int maxSpeed = 3;
+    int diagonalSpeed = speed /100;
     public boolean shoot = false;
 
     public Player(Panel panel, Input input){
@@ -58,6 +57,9 @@ public class Player extends Entity{
         }
         if(speed > maxSpeed) {
             speed = maxSpeed;
+        }
+        if(diagonalSpeed > maxSpeed){
+            diagonalSpeed = maxSpeed;
         }
 
         if(input.upPressed == true){
