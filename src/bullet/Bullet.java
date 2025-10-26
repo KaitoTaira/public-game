@@ -2,7 +2,7 @@ package bullet;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
+import main.Panel;
 public class Bullet {
 
     public BufferedImage image;
@@ -12,11 +12,13 @@ public class Bullet {
     public int bulletwidth = 150;
     public int bulletheight = 150;
     public boolean bulletActive;
+    Panel panel;
 
-    public Bullet(int startX, int startY, BufferedImage img) {
+    public Bullet(int startX, int startY, BufferedImage img, Panel panel) {
         this.bulletx = startX;
         this.bullety = startY;
         this.image = img;
+        this.panel = panel;
         this.bulletActive = true;
     }
 
@@ -28,7 +30,7 @@ public class Bullet {
     }
     public void draw(Graphics2D g2){
         if(bulletActive){
-            g2.drawImage(image, bulletx, bullety, bulletwidth, bulletheight, null);
+            g2.drawImage(image, bulletx - (panel.tileSize), bullety - (panel.tileSize + 50), bulletwidth, bulletheight, null);
         }
     }
 }

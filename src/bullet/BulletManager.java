@@ -12,21 +12,23 @@ import main.Panel;
 
 
 public class BulletManager{
-    ArrayList<Bullet> bullet = new ArrayList<>();
+    ArrayList<Bullet> bullets = new ArrayList<>();
     int cooldown = 0;
     int cooldownMax = 10;
     BufferedImage bulletImage;
     Panel p;
     Player player;
+    Bullet bullet;
     public int bulletx;
     public int bullety;
     public int bulletwidth = 150;
     public int bulletheight = 150;
 
 
-    public BulletManager(Panel p, Player player){
+    public BulletManager(Panel p, Player player, Bullet bullet){
         this.p = p;
         this.player = player;
+        this.bullet = bullet;
         try{
             bulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/bullet.png"));
         }catch(IOException e){
@@ -43,25 +45,26 @@ public class BulletManager{
             cooldown = cooldownMax;
         }
 
-        for (int i = 0; i < bullet.size(); i++) {
-            Bullet b = bullet.get(i);
+        for (int i = 0; i < bullets.size(); i++) {
+            Bullet b = bullets.get(i);
             b.update();
             if (!b.bulletActive) {
-                bullet.remove(i);
+                bullets.remove(i);
                 i--;
             }
         }
     }
     
     public void shoot(){
-        bulletx = player.x - (p.tileSize);
-        bullety = player.y - ((p.tileSize/2) + (bulletheight/2));
-        bullet.add(new Bullet(bulletx, bullety, bulletImage));
+        bullets.add(new Bullet(player.x, player.y, bulletImage, p));
     }
 
     public void draw(Graphics2D g2){
-        for (Bullet b: bullet){
+        for (Bullet b: bullets){
             b.draw(g2);
         }
     }
+    public ArrayList<Bullet> getBullets() {
+    return bullets;
+}
 }

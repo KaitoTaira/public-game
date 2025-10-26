@@ -24,9 +24,12 @@ public class Panel extends JPanel implements Runnable{
 
     Input input = new Input();
     Player player = new Player(this, input);
-    BulletManager bullets = new BulletManager(this, player);
-    Bullet bullet = new Bullet(0, 0, null);
-    Enemy enemy = new Enemy(this, bullet);
+    
+    public int startX = player.x;
+    public int startY = player.y;
+    Bullet bullet = new Bullet(startX, startY, null, this);
+    BulletManager bulletManager = new BulletManager(this, player, bullet);
+    Enemy enemy = new Enemy(this, bullet, bulletManager);
     
     Thread gameThread;
 
@@ -82,7 +85,7 @@ public class Panel extends JPanel implements Runnable{
 
     public void update(){
         player.update();
-        bullets.update();
+        bulletManager.update();
         enemy.update();
     }
 
@@ -92,7 +95,7 @@ public class Panel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         bg.draw(g2);
         player.draw(g2);
-        bullets.draw(g2);
+        bulletManager.draw(g2);
         enemy.draw(g2);
         g2.dispose();
        
