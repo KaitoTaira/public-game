@@ -60,7 +60,8 @@ public class BulletManager{
     }
 
     public void draw(Graphics2D g2){
-        for (Bullet b: bullets){
+        ArrayList<Bullet> bulletsCopy = new ArrayList<>(bullets);
+        for (Bullet b: bulletsCopy){
             b.draw(g2);
         }
     }

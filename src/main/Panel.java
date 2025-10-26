@@ -4,6 +4,7 @@ import background.Background;
 import bullet.Bullet;
 import bullet.BulletManager;
 import entity.Enemy;
+import entity.EnemyManager;
 import entity.Player;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -29,7 +30,8 @@ public class Panel extends JPanel implements Runnable{
     public int startY = player.y;
     Bullet bullet = new Bullet(startX, startY, null, this);
     BulletManager bulletManager = new BulletManager(this, player, bullet);
-    Enemy enemy = new Enemy(this, bullet, bulletManager);
+    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, bulletManager);
+    Enemy enemy = new Enemy(this, bullet, bulletManager, enemyManager);
     
     Thread gameThread;
 
