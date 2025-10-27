@@ -9,8 +9,8 @@ public class Bullet {
     public  boolean collision = false;
     public int bulletx;
     public int bullety;
-    public int bulletwidth = 150;
-    public int bulletheight = 150;
+    public int bulletwidth = 200;
+    public int bulletheight = 200;
     public boolean bulletActive;
     Panel panel;
 
@@ -30,7 +30,7 @@ public class Bullet {
     }
     public void draw(Graphics2D g2){
         if(bulletActive){
-            g2.drawImage(image, bulletx - (panel.tileSize), bullety - (panel.tileSize + 50), bulletwidth, bulletheight, null);
+            g2.drawImage(image, bulletx - (panel.tileSize + 25), bullety - (panel.tileSize + 75), bulletwidth, bulletheight, null);
         }
     }
 }

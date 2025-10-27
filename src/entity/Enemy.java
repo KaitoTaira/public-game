@@ -38,9 +38,19 @@ public class Enemy extends Entity{
             enemy.add(new EnemyManager(100 ,-300, enemyImage, panel, bulletManager));
         }
         if(timer == 5 * second){
-            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager));
-            enemy.add(new EnemyManager(100, -200, enemyImage, panel, bulletManager));
-            enemy.add(new EnemyManager(100 ,-300, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager));
+        }
+        if(timer == 10 * second){
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager));
+        }
+        if(timer == 15 * second){
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager));
+            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager));
         }
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
@@ -77,7 +87,7 @@ public class Enemy extends Entity{
         for (EnemyManager e: enemy){
             e.draw(g2);
         }
-        g2.drawRect(x, y, 50, 50);
+        // g2.drawRect(x, y, 50, 50);
         // for(Bullet bullet : bulletManager.getBullets()){
         // g2.drawRect(bullet.bulletx + (panel.tileSize/2 - 5), bullet.bullety - 30, 10, 10);
         // }

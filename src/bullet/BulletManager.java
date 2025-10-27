@@ -58,7 +58,7 @@ public class BulletManager{
     public void shoot(){
         bullets.add(new Bullet(player.x, player.y, bulletImage, p));
     }
-
+    
     public void draw(Graphics2D g2){
         ArrayList<Bullet> bulletsCopy = new ArrayList<>(bullets);
         for (Bullet b: bulletsCopy){
