@@ -43,4 +43,20 @@ public class Bullet {
             g2.drawImage(image, bulletx - (panel.tileSize + 25), bullety - (panel.tileSize + 75), bulletwidth, bulletheight, null);
         }
     }
+
+    public void collide(){
+        if (type == 0) {
+            for (Enemy e: enemy) {
+                double distanceX = e.enemyX+24.0 - bulletx;
+                double distanceY = e.enemyY+24.0 - bullety;
+                double distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
+                if (distance < 30) {
+                    e.enemyActive = false;
+                    bulletActive = false
+                }
+            }
+        } else if (type == 1) {
+            
+        }
+    }
 }
