@@ -21,7 +21,7 @@ public class Panel extends JPanel implements Runnable{
     public int screenHeight = tileSize * maxScreenCol;
     public int drawCount;
 
-    int fps = 60;
+    public int fps = 60;
 
     Input input = new Input();
     Player player = new Player(this, input);

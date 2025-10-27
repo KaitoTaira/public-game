@@ -23,6 +23,8 @@ public class BulletManager{
     public int bullety;
     public int bulletwidth = 150;
     public int bulletheight = 150;
+    public int timer;
+
 
 
     public BulletManager(Panel p, Player player, Bullet bullet){
@@ -38,25 +40,36 @@ public class BulletManager{
     }
 
     public void update(){
+        timer ++;
         if(cooldown > 0) cooldown --;
         
         if(player.shoot && cooldown == 0){
-            shoot();
+            shoot(1);
             cooldown = cooldownMax;
         }
+        if(timer == fps) {
+            timer = 0;
+            for (int i = 0; i < enemy.size(); i ++) {
+                shoot(2, enemy.get(i));
+            }
+        }
 
-        for (int i = 0; i < bullets.size(); i++) {
+        for (int i = bullets.size()-1; i >= 0; i--) {
             Bullet b = bullets.get(i);
             b.update();
             if (!b.bulletActive) {
                 bullets.remove(i);
-                i--;
             }
         }
     }
     
-    public void shoot(){
-        bullets.add(new Bullet(player.x, player.y, bulletImage, p));
+    public void shoot(int type, Enemy e = null)
+    {
+        if (type == 1) {
+            bullets.add(new Bullet(player.x, player.y, bulletImage, p));
+        } else (type == 2) {
+            bullet.add(new Bullet(e.x, e.y, bulletImage, p, 1));
+        }
     }
     
     public void draw(Graphics2D g2){

@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import main.Panel;
 
 public class Enemy extends Entity{
-    ArrayList<EnemyManager> enemy = new ArrayList<>();
+    public ArrayList<EnemyManager> enemy = new ArrayList<>();
     Panel panel;
     Bullet bullet;
     EnemyManager enemyManager;

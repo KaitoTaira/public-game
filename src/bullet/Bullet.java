@@ -12,20 +12,30 @@ public class Bullet {
     public int bulletwidth = 200;
     public int bulletheight = 200;
     public boolean bulletActive;
+    public int type = 0;
     Panel panel;
 
-    public Bullet(int startX, int startY, BufferedImage img, Panel panel) {
+    public Bullet(int startX, int startY, BufferedImage img, Panel panel, int t = 0) {
         this.bulletx = startX;
         this.bullety = startY;
         this.image = img;
         this.panel = panel;
         this.bulletActive = true;
+        this.type = t;
     }
 
     public void update(){
-        bullety -= 8;
-        if(bullety < -75){
-            bulletActive = false;
+        if (type == 0) {
+            bullety -= 8;
+            if(bullety < -75){
+                bulletActive = false;
+            }
+        }
+        if (type == 1) {
+            bullety += 8;
+            if(bullety > 300+75){
+                bulletActive = false;
+            }
         }
     }
     public void draw(Graphics2D g2){
