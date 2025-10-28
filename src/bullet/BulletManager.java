@@ -44,16 +44,9 @@ public class BulletManager{
         if(cooldown > 0) cooldown --;
         
         if(player.shoot && cooldown == 0){
-            shoot(1);
+            shoot();
             cooldown = cooldownMax;
         }
-        if(timer == fps) {
-            timer = 0;
-            for (int i = 0; i < enemy.size(); i ++) {
-                shoot(2, enemy.get(i));
-            }
-        }
-
         for (int i = bullets.size()-1; i >= 0; i--) {
             Bullet b = bullets.get(i);
             b.update();
@@ -63,13 +56,8 @@ public class BulletManager{
         }
     }
     
-    public void shoot(int type, Enemy e = null)
-    {
-        if (type == 1) {
+    public void shoot(){
             bullets.add(new Bullet(player.x, player.y, bulletImage, p));
-        } else (type == 2) {
-            bullet.add(new Bullet(e.x, e.y, bulletImage, p, 1));
-        }
     }
     
     public void draw(Graphics2D g2){

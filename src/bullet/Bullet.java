@@ -15,13 +15,12 @@ public class Bullet {
     public int type = 0;
     Panel panel;
 
-    public Bullet(int startX, int startY, BufferedImage img, Panel panel, int t = 0) {
+    public Bullet(int startX, int startY, BufferedImage img, Panel panel) {
         this.bulletx = startX;
         this.bullety = startY;
         this.image = img;
         this.panel = panel;
         this.bulletActive = true;
-        this.type = t;
     }
 
     public void update(){
@@ -41,22 +40,6 @@ public class Bullet {
     public void draw(Graphics2D g2){
         if(bulletActive){
             g2.drawImage(image, bulletx - (panel.tileSize + 25), bullety - (panel.tileSize + 75), bulletwidth, bulletheight, null);
-        }
-    }
-
-    public void collide(){
-        if (type == 0) {
-            for (Enemy e: enemy) {
-                double distanceX = e.enemyX+24.0 - bulletx;
-                double distanceY = e.enemyY+24.0 - bullety;
-                double distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-                if (distance < 30) {
-                    e.enemyActive = false;
-                    bulletActive = false
-                }
-            }
-        } else if (type == 1) {
-            
         }
     }
 }
