@@ -76,8 +76,6 @@ public class Enemy extends Entity{
             e.printStackTrace();
         }
     }
-
-    
     public void setDefaultValues(){
        x = 100;
        y = -100;
