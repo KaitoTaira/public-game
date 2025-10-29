@@ -4,7 +4,9 @@ import bullet.Bullet;
 import bullet.BulletManager;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import main.Panel;
+
 
 public class EnemyManager {
     Panel panel;
@@ -14,14 +16,17 @@ public class EnemyManager {
     public BufferedImage image;
     public boolean enemyActive;
     public double distance;
+    ArrayList<Integer> path;
+    private int t = 0;
 
-    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, BulletManager bulletManager) {
+    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, BulletManager bulletManager, ArrayList<Integer> p) {
         this.enemyX = startX;
         this.enemyY = startY;
         this.image = img;
         this.panel = panel;
         this.enemyActive = true;
         this.bulletManager = bulletManager;
+        path = p;
     }
 
     public void update(){
@@ -29,6 +34,8 @@ public class EnemyManager {
         if(enemyY > 550){
             enemyActive = false;
         }
+        t++;
+        enemyX += path.get((t/20)%path.size());
         for(Bullet bullet : bulletManager.getBullets()){
         double enemyCenterX = enemyX + 24.0;
         double enemyCenterY = enemyY + 24.0;

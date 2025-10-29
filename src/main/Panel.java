@@ -9,6 +9,8 @@ import entity.Player;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
 public class Panel extends JPanel implements Runnable{
@@ -30,7 +32,7 @@ public class Panel extends JPanel implements Runnable{
     public int startY = player.y;
     Bullet bullet = new Bullet(startX, startY, null, this);
     BulletManager bulletManager = new BulletManager(this, player, bullet);
-    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, bulletManager);
+    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, bulletManager, new ArrayList<Integer>());
     Enemy enemy = new Enemy(this, bullet, bulletManager, enemyManager);
     
     Thread gameThread;
