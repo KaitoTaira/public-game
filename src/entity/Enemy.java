@@ -33,24 +33,25 @@ public class Enemy extends Entity{
     public void update(){
         timer ++;
         if(timer == second){
-            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(100, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(100 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
+            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(1))));
+            enemy.add(new EnemyManager(100, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(1))));
+            enemy.add(new EnemyManager(100 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(1))));
         }
         if(timer == 5 * second){
-            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1))));
+            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1))));
+            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1))));
         }
         if(timer == 10 * second){
-            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
+            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(3,0))));
+            enemy.add(new EnemyManager(100, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(3,0))));
+            enemy.add(new EnemyManager(100 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(3,0))));
+
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-3,0))));
+            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-3,0))));
+            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-3,0))));
         }
         if(timer == 15 * second){
-            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(400, -200, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
-            enemy.add(new EnemyManager(400 ,-300, enemyImage, panel, bulletManager, new ArrayList<>(Arrays.asList(-1, 2, -3, 2, 1))));
         }
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
