@@ -3,6 +3,7 @@ package entity;
 import bullet.Bullet;
 import bullet.BulletManager;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import main.Panel;
@@ -16,10 +17,10 @@ public class EnemyManager {
     public BufferedImage image;
     public boolean enemyActive;
     public double distance;
-    ArrayList<Integer> path;
+    ArrayList<Point> path;
     private int t = 0;
 
-    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, BulletManager bulletManager, ArrayList<Integer> p) {
+    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, BulletManager bulletManager, ArrayList<Point> p) {
         this.enemyX = startX;
         this.enemyY = startY;
         this.image = img;
@@ -30,12 +31,13 @@ public class EnemyManager {
     }
 
     public void update(){
-        enemyY += 3;
-        if(enemyY > 550){
+        if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;
         }
         t++;
-        enemyX += path.get((t/20)%path.size());
+        Point p = path.get((t / 20) % path.size());
+        enemyX += p.x;
+        enemyY += p.y;
         for(Bullet bullet : bulletManager.getBullets()){
         double enemyCenterX = enemyX + 24.0;
         double enemyCenterY = enemyY + 24.0;
