@@ -9,7 +9,7 @@ import main.Panel;
 
 public class EnemyManager {
     public enum Type{
-        RED
+        LEFT, RIGHT, TOPLEFT, TOPRIGHT
     }
     Panel panel;
     BulletManager bulletManager;
@@ -20,6 +20,8 @@ public class EnemyManager {
     public double distance;
     public Type type;
     public Type getType() { return type; }
+    public int t;
+    public int second = 60;
 
     public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, BulletManager bulletManager, Type type) {
         this.enemyX = startX;
@@ -32,6 +34,7 @@ public class EnemyManager {
     }
 
     public void update(){
+        t++;
         if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;
         }
@@ -55,9 +58,28 @@ public class EnemyManager {
             g2.drawImage(image, enemyX, enemyY, 50, 50, null);
         }
     }
-    public void red(int y){
-        if(enemyY < 200){
-            enemyY += y;
+    public void topleft(){
+        if(t < 2 *second){
+            enemyY += 2;
         }
+        else if(t < 5 * second){
+            enemyY += 2;
+            enemyX += 2;
+        }
+    }
+    public void topright(){
+        if(t < 2 *second){
+            enemyY += 3;
+        }
+        else if(t < 5 * second){
+            enemyY += 3;
+            enemyX -= 3;
+        }
+    }
+    public void left(){
+
+    }
+    public void right(){
+
     }
 }

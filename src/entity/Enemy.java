@@ -32,12 +32,45 @@ public class Enemy extends Entity{
     public void update(){
         timer ++;
         if(timer == second){
-            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, EnemyManager.Type.RED));
+            enemyManager.t = 0;
+            enemy.add(new EnemyManager(300, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+        }
+        if (timer == 2 * second){
+            enemy.add(new EnemyManager(200, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+        }
+
+
+        if(timer == 5 * second){
+            enemyManager.t = 0;
+            enemy.add(new EnemyManager(200, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(250, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+        }
+        if(timer == 6 * second){
+            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+        }
+
+        if(timer == 10 * second){
+            
+        }
+        if(timer == 11 * second){
+            
+        }
+
+        if(timer == 15 * second){
+            
+        }
+        if(timer == 16 * second){
+            
         }
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
             switch(e.getType()){
-                case RED:e.red(3);
+                case TOPLEFT:e.topleft();
+                case TOPRIGHT:e.topright();
+                case LEFT:e.left();
+                case RIGHT:e.right();
             }
             e.update();
             if (!e.enemyActive) {
