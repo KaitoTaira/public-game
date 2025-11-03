@@ -33,7 +33,8 @@ public class EnemyManager {
         this.type = type;
     }
 
-    public void update(){
+    public void update(){ 
+        System.out.println(t);
         t++;
         if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;
@@ -60,20 +61,20 @@ public class EnemyManager {
     }
     public void topleft(){
         if(t < 2 *second){
-            enemyY += 2;
+            enemyY += 1;
         }
         else if(t < 5 * second){
-            enemyY += 2;
-            enemyX += 2;
+            enemyY += 1;
+            enemyX +=1;
         }
     }
     public void topright(){
         if(t < 2 *second){
-            enemyY += 3;
+            enemyY += 1;
         }
         else if(t < 5 * second){
-            enemyY += 3;
-            enemyX -= 3;
+            enemyY += 1;
+            enemyX -= 1;
         }
     }
     public void left(){

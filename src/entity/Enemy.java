@@ -32,7 +32,6 @@ public class Enemy extends Entity{
     public void update(){
         timer ++;
         if(timer == second){
-            enemyManager.t = 0;
             enemy.add(new EnemyManager(300, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
         }
         if (timer == 2 * second){
@@ -42,7 +41,6 @@ public class Enemy extends Entity{
 
 
         if(timer == 5 * second){
-            enemyManager.t = 0;
             enemy.add(new EnemyManager(200, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
             enemy.add(new EnemyManager(250, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
         }
