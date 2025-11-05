@@ -9,7 +9,7 @@ import main.Panel;
 
 public class EnemyManager {
     public enum Type{
-        LEFT, RIGHT, TOPLEFT, TOPRIGHT
+        TOPLEFT, TOPRIGHT
     }
     Panel panel;
     BulletManager bulletManager;
@@ -34,7 +34,6 @@ public class EnemyManager {
     }
 
     public void update(){ 
-        System.out.println(t);
         t++;
         if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;
@@ -61,26 +60,22 @@ public class EnemyManager {
     }
     public void topleft(){
         if(t < 2 *second){
-            enemyY += 1;
+            enemyY += 3;
         }
         else if(t < 5 * second){
-            enemyY += 1;
-            enemyX +=1;
+            enemyX += 3;
+            enemyY += 3;
+        }
+        else if (t < 10 * second){
         }
     }
     public void topright(){
         if(t < 2 *second){
-            enemyY += 1;
+            enemyY += 3;
         }
         else if(t < 5 * second){
-            enemyY += 1;
-            enemyX -= 1;
+            enemyY += 3;
+            enemyX -= 3;
         }
-    }
-    public void left(){
-
-    }
-    public void right(){
-
     }
 }

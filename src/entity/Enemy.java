@@ -44,31 +44,45 @@ public class Enemy extends Entity{
             enemy.add(new EnemyManager(200, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
             enemy.add(new EnemyManager(250, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
         }
-        if(timer == 6 * second){
+        if(timer == 7 * second){
             enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
             enemy.add(new EnemyManager(400, -100, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
         }
+        
 
         if(timer == 10 * second){
-            
+            enemy.add(new EnemyManager(300, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+            enemy.add(new EnemyManager(400, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+            enemy.add(new EnemyManager(500, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+            enemy.add(new EnemyManager(600, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
         }
-        if(timer == 11 * second){
-            
+        if(timer == 12 * second){
+            enemy.add(new EnemyManager(200, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
+            enemy.add(new EnemyManager(100, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPRIGHT));
         }
 
+
         if(timer == 15 * second){
-            
+            enemy.add(new EnemyManager(200, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(250, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(300, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(450, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
         }
-        if(timer == 16 * second){
-            
+        if(timer == 17 * second){
+            enemy.add(new EnemyManager(100, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(400, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(300, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
+            enemy.add(new EnemyManager(500, 50, enemyImage, panel, bulletManager, EnemyManager.Type.TOPLEFT));
         }
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
             switch(e.getType()){
-                case TOPLEFT:e.topleft();
-                case TOPRIGHT:e.topright();
-                case LEFT:e.left();
-                case RIGHT:e.right();
+                case TOPLEFT:
+                    e.topleft();
+                    break;
+                case TOPRIGHT:
+                    e.topright();
+                    break;
             }
             e.update();
             if (!e.enemyActive) {
