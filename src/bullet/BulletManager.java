@@ -1,6 +1,8 @@
 package bullet;
 
 
+import entity.Enemy;
+import entity.EnemyManager;
 import entity.Player;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -19,18 +21,22 @@ public class BulletManager{
     Panel p;
     Player player;
     Bullet bullet;
+    EnemyManager enemyManager;
     public int bulletx;
     public int bullety;
     public int bulletwidth = 150;
     public int bulletheight = 150;
     public int timer;
+    Enemy enemy;
 
 
 
-    public BulletManager(Panel p, Player player, Bullet bullet){
+    public BulletManager(Panel p, Player player, Bullet bullet, EnemyManager enemyManager, Enemy enemy){
         this.p = p;
         this.player = player;
         this.bullet = bullet;
+        this.enemyManager = enemyManager;
+        this.enemy = enemy;
         try{
             bulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/bullet.png"));
         }catch(IOException e){
@@ -44,7 +50,7 @@ public class BulletManager{
         if(cooldown > 0) cooldown --;
         
         if(player.shoot && cooldown == 0){
-            shoot();
+            playerShoot();
             cooldown = cooldownMax;
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -56,8 +62,8 @@ public class BulletManager{
         }
     }
     
-    public void shoot(){
-            bullets.add(new Bullet(player.x, player.y, bulletImage, p));
+    public void playerShoot(){
+        bullets.add(new Bullet(player.x, player.y, bulletImage, p, enemy, enemyManager));
     }
     
     public void draw(Graphics2D g2){

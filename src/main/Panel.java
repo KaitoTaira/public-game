@@ -28,10 +28,11 @@ public class Panel extends JPanel implements Runnable{
     
     public int startX = player.x;
     public int startY = player.y;
-    Bullet bullet = new Bullet(startX, startY, null, this);
-    BulletManager bulletManager = new BulletManager(this, player, bullet);
-    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, bulletManager, EnemyManager.Type.LEFT);
-    Enemy enemy = new Enemy(this, bullet, bulletManager, enemyManager);
+    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, EnemyManager.Type.LEFT);
+    Enemy enemy = new Enemy(this, enemyManager);
+    Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager);
+    BulletManager bulletManager = new BulletManager(this, player, bullet, enemyManager, enemy);
+    
     
     Thread gameThread;
 

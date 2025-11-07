@@ -1,7 +1,5 @@
 package entity;
 
-import bullet.Bullet;
-import bullet.BulletManager;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import main.Panel;
@@ -9,10 +7,9 @@ import main.Panel;
 
 public class EnemyManager {
     public enum Type{
-        LEFT, RIGHT
+        LEFT, RIGHT, CENTER
     }
     Panel panel;
-    BulletManager bulletManager;
     public int enemyX;
     public int enemyY;
     public BufferedImage image;
@@ -23,35 +20,21 @@ public class EnemyManager {
     public int t;
     public int second = 60;
 
-    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, BulletManager bulletManager, Type type) {
+    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type) {
         this.enemyX = startX;
         this.enemyY = startY;
         this.image = img;
         this.panel = panel;
         this.enemyActive = true;
-        this.bulletManager = bulletManager;
         this.type = type;
     }
 
-    public void update(){ 
+    public void update(){
         t++;
         if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;
         }
-        for(Bullet bullet : bulletManager.getBullets()){
-        double enemyCenterX = enemyX + 24.0;
-        double enemyCenterY = enemyY + 24.0;
-        double bulletCenterX = bullet.bulletx + (panel.tileSize/2 - 5);
-        double bulletCenterY = bullet.bullety - 30;
-        double distanceX = enemyCenterX - bulletCenterX;
-        double distanceY = enemyCenterY - bulletCenterY;
-
-        this.distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-        if(distance < 30){
-            enemyActive = false;
-            bullet.bulletActive = false;
-            }
-        }
+        
     }
     public void draw(Graphics2D g2){
         if(enemyActive){
@@ -59,15 +42,29 @@ public class EnemyManager {
         }
     }
     public void left(){
-       if(t <= 2 * second){
-        enemyY += 3;
-       }
-       else if(t <= 5 * second){
-        enemyY += 3;
-        enemyX -= 3;
-       } 
+        if(t <= 2 * second){
+            enemyY += 3;
+        }
+        else if(t <= 5 * second){
+            enemyY += 3;
+            enemyX -= 3;
+        } 
     }
     public void right(){
-
+        if(t <= 2 * second){
+            enemyY += 3;
+        }
+        else if(t <= 5 * second){
+            enemyY += 3;
+            enemyX += 3;
+        } 
+    }
+    public void center(){
+        if(t <= 2 * second){
+            enemyY += 3;
+        }
+        else if(t <= 5 * second){
+            enemyY += 5;
+        }
     }
 }

@@ -1,8 +1,11 @@
 package bullet;
 
+import entity.Enemy;
+import entity.EnemyManager;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import main.Panel;
+
 public class Bullet {
 
     public BufferedImage image;
@@ -14,26 +17,34 @@ public class Bullet {
     public boolean bulletActive;
     public int type = 0;
     Panel panel;
+    Enemy enemy;
+    EnemyManager enemyManager;
+      public double distance;
 
-    public Bullet(int startX, int startY, BufferedImage img, Panel panel) {
+    public Bullet(int startX, int startY, BufferedImage img, Panel panel, Enemy enemy, EnemyManager enemyManager) {
         this.bulletx = startX;
         this.bullety = startY;
         this.image = img;
         this.panel = panel;
         this.bulletActive = true;
+        this.enemy = enemy;
+        this.enemyManager = enemyManager;
     }
 
     public void update(){
-        if (type == 0) {
-            bullety -= 8;
-            if(bullety < -75){
-                bulletActive = false;
-            }
-        }
-        if (type == 1) {
-            bullety += 8;
-            if(bullety > 300+75){
-                bulletActive = false;
+        bullety -= 5;
+        for(EnemyManager enemyManager : enemy.getEnemy()){
+        double enemyCenterX = enemyManager.enemyX + 24.0;
+        double enemyCenterY = enemyManager.enemyY + 24.0;
+        double bulletCenterX = bulletx + (panel.tileSize/2 - 5);
+        double bulletCenterY = bullety - 30;
+        double distanceX = enemyCenterX - bulletCenterX;
+        double distanceY = enemyCenterY - bulletCenterY;
+
+        this.distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
+        if(distance < 30){
+            enemyManager.enemyActive = false;
+            bulletActive = false;
             }
         }
     }

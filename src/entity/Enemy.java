@@ -20,7 +20,7 @@ public class Enemy extends Entity{
     public int second = 60;
     
 
-    public Enemy(Panel panel, Bullet bullet, BulletManager bulletManager, EnemyManager enemyManager){
+    public Enemy(Panel panel, EnemyManager enemyManager){
         this.panel = panel;
         this.bullet = bullet;
         this.bulletManager = bulletManager;
@@ -32,10 +32,7 @@ public class Enemy extends Entity{
     public void update(){
         timer ++;
         if(timer == second){
-            enemy.add(new EnemyManager(100, -100, enemyImage, panel, bulletManager, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(150, -100, enemyImage, panel, bulletManager, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(100, -150, enemyImage, panel, bulletManager, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(150, -150, enemyImage, panel, bulletManager, EnemyManager.Type.LEFT));
+            enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
         }
         
         for (int i = 0; i < enemy.size(); i++) {
@@ -46,6 +43,9 @@ public class Enemy extends Entity{
                     break;
                 case RIGHT:
                     e.right();
+                    break;
+                case CENTER:
+                    e.center();
                     break;
             }
             e.update();
@@ -83,5 +83,9 @@ public class Enemy extends Entity{
         // for(Bullet bullet : bulletManager.getBullets()){
         // g2.drawRect(bullet.bulletx + (panel.tileSize/2 - 5), bullet.bullety - 30, 10, 10);
         // }
+        
     }
+    public ArrayList<EnemyManager> getEnemy() {
+    return enemy;
+}
 }
