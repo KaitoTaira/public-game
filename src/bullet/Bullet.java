@@ -42,14 +42,14 @@ public class Bullet {
         } else {
             bullety -= 7;
         }
+        
+        for(EnemyManager enemyManager : enemy.getEnemy()){
         double enemyCenterX = enemyManager.enemyX + 24.0;
         double enemyCenterY = enemyManager.enemyY + 24.0;
         double bulletCenterX = bulletx + (panel.tileSize/2 - 5);
         double bulletCenterY = bullety - 30;
         double distanceX = enemyCenterX - bulletCenterX;
         double distanceY = enemyCenterY - bulletCenterY;
-        for(EnemyManager enemyManager : enemy.getEnemy()){
-
         this.distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
         if(distance < 30 && !isEnemyBullet){
             enemyManager.enemyActive = false;
@@ -58,6 +58,8 @@ public class Bullet {
         }
         double playerCenterX = player.x + 24.0;
         double playerCenterY = player.y + 24.0;
+        double bulletCenterX = bulletx + (panel.tileSize/2 - 5);
+        double bulletCenterY = bullety - 30;
         double playerDistanceX = playerCenterX - bulletCenterX;
         double playerDistanceY = playerCenterY - bulletCenterY;
         this.distance = Math.sqrt((playerDistanceX * playerDistanceX) + (playerDistanceY * playerDistanceY));

@@ -25,7 +25,7 @@ Panel panel;
     public void getBackgroundImage(){
         try {
             bg = ImageIO.read(getClass().getResourceAsStream("/background/background.png"));
-            gameover = ImageIO.read(getClass().getResourceAsStream("/gameover/background.png"));
+            gameover = ImageIO.read(getClass().getResourceAsStream("/background/gameover.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,7 +45,13 @@ Panel panel;
     }
 
     public void update(){
-        y += 1;
+        if(player.playerActive){
+            y += 1;
+        }
+        else{
+            y += 0;
+            setDefaultValues();
+        }
         resetBackground(null);
     }
 
