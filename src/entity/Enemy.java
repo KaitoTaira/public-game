@@ -33,9 +33,6 @@ public class Enemy extends Entity{
         timer ++;
         if(timer == second){
             enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(100, -150, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(150, -100, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(150, -150, enemyImage, panel, EnemyManager.Type.LEFT));
         }
         
         for (int i = 0; i < enemy.size(); i++) {

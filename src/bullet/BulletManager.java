@@ -56,7 +56,7 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer == second){
+        if(timer % (second) == 0){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -69,27 +69,19 @@ public class BulletManager{
     }
     
     public void playerShoot(){
-        bullets.add(new Bullet(player.x, player.y, bulletImage, p, enemy, enemyManager));
-        playerBullet = true;
+        bullets.add(new Bullet(player.x, player.y, bulletImage, p, enemy, enemyManager, false, player));
     }
     public void enemyShoot(){
-        bullets.add(new Bullet(enemyManager.enemyX, enemyManager.enemyY, bulletImage, p, enemy, enemyManager));
-        enemyBullet = true;
+         for(EnemyManager enemyManager : enemy.getEnemy()){
+        bullets.add(new Bullet(enemyManager.enemyX, enemyManager.enemyY + 60, bulletImage, p, enemy, enemyManager, true, player));
+         }
     }
     
     public void draw(Graphics2D g2){
         ArrayList<Bullet> bulletsCopy = new ArrayList<>(bullets);
         for (Bullet b: bulletsCopy){
             if(b.bulletActive){
-                if(playerBullet){
-                    g2.drawImage(b.image, b.bulletx - (p.tileSize + 25), b.bullety - (p.tileSize + 75), bulletwidth, bulletheight, null);
-                }
-                else if(enemyBullet){
-                    g2.drawImage(b.image, enemyManager.enemyX, enemyManager.enemyY - 400, bulletwidth, bulletheight, null);
-                    System.out.println("X: " + enemyManager.enemyX);
-                    System.out.println("Y: " + enemyManager.enemyY);
-                }
-                
+            g2.drawImage(b.image, b.bulletx - (p.tileSize + 25), b.bullety - (p.tileSize + 75), bulletwidth, bulletheight, null);  
         }
         }
     }

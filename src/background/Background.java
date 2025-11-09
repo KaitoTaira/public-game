@@ -1,5 +1,6 @@
 package background;
 
+import entity.Player;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -7,14 +8,16 @@ import main.Panel;
 
 public class Background {
 
-public BufferedImage bg;
+public BufferedImage bg, gameover;
 public int x;
 public int y;
+Player player;
 
 Panel panel;
 
-    public Background(Panel panel){
+    public Background(Panel panel, Player player){
         this.panel = panel;
+        this.player = player;
 
         setDefaultValues();
     }
@@ -22,6 +25,7 @@ Panel panel;
     public void getBackgroundImage(){
         try {
             bg = ImageIO.read(getClass().getResourceAsStream("/background/background.png"));
+            gameover = ImageIO.read(getClass().getResourceAsStream("/gameover/background.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,6 +34,9 @@ Panel panel;
     public void draw(Graphics2D g2){
         g2.drawImage(bg, x, y, panel.getWidth(), panel.getHeight(), null);
         g2.drawImage(bg, x, y - panel.getHeight(), panel.getWidth(), panel.getHeight(), null);
+    }
+    public void end(Graphics2D g2){
+        g2.drawImage(gameover, x, y, panel.getWidth(), panel.getHeight(), null);
     }
 
     public void setDefaultValues(){

@@ -28,9 +28,12 @@ public class Panel extends JPanel implements Runnable{
     
     public int startX = player.x;
     public int startY = player.y;
+    
     EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, EnemyManager.Type.LEFT);
     Enemy enemy = new Enemy(this, enemyManager);
-    Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager);
+    public int enemyStartX = enemy.x;
+    public int enemyStartY = enemy.y;
+    Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager, false, player);
     BulletManager bulletManager = new BulletManager(this, player, bullet, enemyManager, enemy);
     
     
@@ -38,7 +41,7 @@ public class Panel extends JPanel implements Runnable{
 
     
 
-    Background bg = new Background(this);
+    Background bg = new Background(this, player);
 
     public Panel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -100,7 +103,10 @@ public class Panel extends JPanel implements Runnable{
         player.draw(g2);
         bulletManager.draw(g2);
         enemy.draw(g2);
+        
+        if(player.playerActive == false){
+            bg.end(g2);
+        }
         g2.dispose();
-       
     }
 }

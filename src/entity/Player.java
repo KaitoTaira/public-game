@@ -14,6 +14,7 @@ public class Player extends Entity{
     int maxSpeed = 3;
     int diagonalSpeed = speed /100;
     public boolean shoot = false;
+    public boolean playerActive = true;
 
     public Player(Panel panel, Input input){
         this.panel = panel;
@@ -46,8 +47,6 @@ public class Player extends Entity{
         }
     }
     public void update(){
-
-
         if(input.shiftPressed == true){
             maxSpeed = 2;
         }
