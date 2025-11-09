@@ -33,6 +33,11 @@ public class Enemy extends Entity{
         timer ++;
         if(timer == second){
             enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
+            enemy.add(new EnemyManager(500, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
+        }
+        if(timer == 5 * second){
+            enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
+            enemy.add(new EnemyManager(500, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
         }
         
         for (int i = 0; i < enemy.size(); i++) {
@@ -79,10 +84,6 @@ public class Enemy extends Entity{
         for (EnemyManager e: enemy){
             e.draw(g2);
         }
-        // g2.drawRect(x, y, 50, 50);
-        // for(Bullet bullet : bulletManager.getBullets()){
-        // g2.drawRect(bullet.bulletx + (panel.tileSize/2 - 5), bullet.bullety - 30, 10, 10);
-        // }
         
     }
     public ArrayList<EnemyManager> getEnemy() {

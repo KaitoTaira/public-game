@@ -19,6 +19,8 @@ public class EnemyManager {
     public Type getType() { return type; }
     public int t;
     public int second = 60;
+    public boolean enemyLeft;
+    public boolean enemyRight;
 
     public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type) {
         this.enemyX = startX;
@@ -42,21 +44,21 @@ public class EnemyManager {
         }
     }
     public void left(){
-        if(t <= 2 * second){
+        enemyLeft = true;
+        if(t <= 1 * second){
             enemyY += 3;
         }
         else if(t <= 5 * second){
-            enemyY += 3;
-            enemyX -= 3;
+            enemyX -= 1;
         } 
     }
     public void right(){
+        enemyRight = true;
         if(t <= 2 * second){
             enemyY += 3;
         }
         else if(t <= 5 * second){
-            enemyY += 3;
-            enemyX += 3;
+            enemyX += 1;
         } 
     }
     public void center(){
@@ -64,7 +66,7 @@ public class EnemyManager {
             enemyY += 3;
         }
         else if(t <= 5 * second){
-            enemyY += 5;
+            enemyY += 0;
         }
     }
 }
