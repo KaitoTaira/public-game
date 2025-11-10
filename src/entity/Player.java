@@ -11,7 +11,7 @@ public class Player extends Entity{
     Panel panel;
     Input input;
 
-    int maxSpeed = 3;
+    int maxSpeed = 2;
     int diagonalSpeed = speed /100;
     public boolean shoot = false;
     public boolean playerActive = true;
@@ -27,7 +27,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
         x = panel.screenWidth/2 - panel.tileSize/2;
         y = 500;
-        speed = 4;  
+        speed = 2;  
         direction = "up";
 
     }

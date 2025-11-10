@@ -54,7 +54,7 @@ public class EnemyManager {
     }
     public void right(){
         enemyRight = true;
-        if(t <= 2 * second){
+        if(t <= 1 * second){
             enemyY += 3;
         }
         else if(t <= 5 * second){

@@ -58,7 +58,7 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer % (15) == 0){
+        if(timer % (2 * second) == 0){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -76,6 +76,18 @@ public class BulletManager{
                 case ENEMYRIGHT:
                     b.enemyRight();
                     break;
+                case ENEMYLEFT2:
+                    b.enemyLeft2();
+                    break;
+                case ENEMYRIGHT2:
+                    b.enemyRight2();
+                    break;
+                case ENEMYLEFT3:
+                    b.enemyLeft3();
+                    break;
+                case ENEMYRIGHT3:
+                    b.enemyRight3();
+                    break;
             }
             b.update();
             if (!b.bulletActive) {
@@ -90,10 +102,17 @@ public class BulletManager{
     public void enemyShoot(){
         for(EnemyManager enemyManager : enemy.getEnemy()){
         if(enemyManager.enemyRight){
-        bullets.add(new Bullet(enemyManager.enemyX - 60, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT, player));
+        bullets.add(new Bullet(enemyManager.enemyX - 40, enemyManager.enemyY, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT, player));
+        bullets.add(new Bullet(enemyManager.enemyX - 30, enemyManager.enemyY + 40, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT2, player));
+        bullets.add(new Bullet(enemyManager.enemyX - 20, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT3, player));
+        bullets.add(new Bullet(enemyManager.enemyX, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYDOWN, player));
+        
         }
         else if(enemyManager.enemyLeft){
-        bullets.add(new Bullet(enemyManager.enemyX + 60, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT, player));
+        bullets.add(new Bullet(enemyManager.enemyX - 40, enemyManager.enemyY, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT, player));
+        bullets.add(new Bullet(enemyManager.enemyX - 30, enemyManager.enemyY + 40, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT2, player));
+        bullets.add(new Bullet(enemyManager.enemyX - 20, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT3, player));
+        bullets.add(new Bullet(enemyManager.enemyX, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYDOWN, player));
         }
         }
     }
