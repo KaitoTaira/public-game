@@ -30,7 +30,6 @@ public class BulletManager{
     public int second = 60;
     public boolean playerBullet;
     public boolean enemyBullet;
-    BufferedImage enemyBulletImage;
     Enemy enemy;
 
 
@@ -43,7 +42,6 @@ public class BulletManager{
         this.enemy = enemy;
         try{
             bulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/bullet.png"));
-            enemyBulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/enemybullet.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -76,18 +74,6 @@ public class BulletManager{
                 case ENEMYRIGHT:
                     b.enemyRight();
                     break;
-                case ENEMYLEFT2:
-                    b.enemyLeft2();
-                    break;
-                case ENEMYRIGHT2:
-                    b.enemyRight2();
-                    break;
-                case ENEMYLEFT3:
-                    b.enemyLeft3();
-                    break;
-                case ENEMYRIGHT3:
-                    b.enemyRight3();
-                    break;
             }
             b.update();
             if (!b.bulletActive) {
@@ -100,30 +86,34 @@ public class BulletManager{
         bullets.add(new Bullet(player.x, player.y, bulletImage, p, enemy, enemyManager, Bullet.Type.PLAYER, player));
     }
     public void enemyShoot(){
+        double radius = 20;
+        int num = 8;
+        Bullet.Type[] types = {
+        Bullet.Type.ENEMYRIGHT,      // 0
+        Bullet.Type.ENEMYDOWNRIGHT,  // 45°
+        Bullet.Type.ENEMYDOWN,       // 90°
+        Bullet.Type.ENEMYLEFTDOWN,   // 135°
+        Bullet.Type.ENEMYLEFT,       // 180°
+        Bullet.Type.ENEMYUPLEFT,     // 225°
+        Bullet.Type.ENEMYUP,         // 270°
+        Bullet.Type.ENEMYUPRIGHT     // 315°
+};
         for(EnemyManager enemyManager : enemy.getEnemy()){
-        if(enemyManager.enemyRight){
-        bullets.add(new Bullet(enemyManager.enemyX - 40, enemyManager.enemyY, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT, player));
-        bullets.add(new Bullet(enemyManager.enemyX - 30, enemyManager.enemyY + 40, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT2, player));
-        bullets.add(new Bullet(enemyManager.enemyX - 20, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYLEFT3, player));
-        bullets.add(new Bullet(enemyManager.enemyX, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYDOWN, player));
-        
+            for(int i = 0; i < num; i++){
+        double angle = i * 2 * Math.PI / num;
+        double enemyX = enemyManager.enemyX + (radius * Math.cos(angle));
+        double enemyY = enemyManager.enemyY + (radius * Math.sin(angle));
+        bullets.add(new Bullet((int)enemyX, (int)enemyY, bulletImage, p, enemy, enemyManager, types[i], player));
         }
-        else if(enemyManager.enemyLeft){
-        bullets.add(new Bullet(enemyManager.enemyX - 40, enemyManager.enemyY, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT, player));
-        bullets.add(new Bullet(enemyManager.enemyX - 30, enemyManager.enemyY + 40, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT2, player));
-        bullets.add(new Bullet(enemyManager.enemyX - 20, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYRIGHT3, player));
-        bullets.add(new Bullet(enemyManager.enemyX, enemyManager.enemyY + 60, enemyBulletImage, p, enemy, enemyManager, Bullet.Type.ENEMYDOWN, player));
-        }
-        }
+    }
     }
     
     public void draw(Graphics2D g2){
         ArrayList<Bullet> bulletsCopy = new ArrayList<>(bullets);
         for (Bullet b: bulletsCopy){
             if(b.bulletActive){
-                if(bullet.isEnemyBullet){
-                    g2.drawImage(enemyBulletImage, b.bulletx -25, b.bullety - 75, bulletwidth, bulletheight, null);
-                    System.out.println("fe");
+                if(b.isEnemyBullet){
+                    g2.drawImage(b.image, b.bulletx, b.bullety, bulletwidth, bulletheight, null);
                 }  
                 else{
                 g2.drawImage(b.image, b.bulletx -25, b.bullety - 75, bulletwidth, bulletheight, null);

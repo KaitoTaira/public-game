@@ -32,26 +32,12 @@ public class Enemy extends Entity{
     public void update(){
         timer ++;
         if(timer == 30){
-            enemy.add(new EnemyManager(100, -75, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(500, -50, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(200, -125, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(400, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
+            enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
         }
         if(timer == 3 * second){
-            enemy.add(new EnemyManager(75, -100, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(475, -50, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(175, -750, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(375, -125, enemyImage, panel, EnemyManager.Type.RIGHT));
+            enemy.add(new EnemyManager(400, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
         }
         if(timer == 5*second){
-            enemy.add(new EnemyManager(75, -100, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(475, -50, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(175, -750, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(375, -125, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(100, -75, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(500, -50, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(200, -125, enemyImage, panel, EnemyManager.Type.LEFT));
-            enemy.add(new EnemyManager(400, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
         }
         
         for (int i = 0; i < enemy.size(); i++) {

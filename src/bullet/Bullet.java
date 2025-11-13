@@ -24,7 +24,7 @@ public class Bullet {
     public double distance;
     Player player;
     public enum Type{
-        ENEMYDOWN, ENEMYLEFT, ENEMYRIGHT, PLAYER, ENEMYLEFT2, ENEMYLEFT3, ENEMYRIGHT2, ENEMYRIGHT3
+        ENEMYDOWN, ENEMYLEFT, ENEMYDOWNRIGHT, ENEMYLEFTDOWN, ENEMYUPLEFT, ENEMYUPRIGHT, ENEMYRIGHT, PLAYER, ENEMYUP
     }
     public Type type;
     public Type getType() { return type; }
@@ -65,7 +65,7 @@ public class Bullet {
         double playerDistanceX = playerCenterX - bulletCenterX;
         double playerDistanceY = playerCenterY - bulletCenterY;
         this.distance = Math.sqrt((playerDistanceX * playerDistanceX) + (playerDistanceY * playerDistanceY));
-        if(distance < 10 && isEnemyBullet){
+        if(distance < 25 && isEnemyBullet){
             player.playerActive = false;
             bulletActive = false;
             }
@@ -83,32 +83,10 @@ public class Bullet {
     }
     public void enemyLeft(){
         isEnemyBullet = true;
-        bullety += speed/1.5 / Math.sqrt(2);
-        bulletx -= speed / Math.sqrt(2);
+        bulletx -= speed;
     }
     public void enemyRight(){
         isEnemyBullet = true;
-        bullety += speed/1.5 / Math.sqrt(2);
-        bulletx += speed / Math.sqrt(2);
-    }
-    public void enemyLeft2(){
-        isEnemyBullet = true;
-        bullety += speed / Math.sqrt(2);
-        bulletx -= speed / Math.sqrt(2);
-    }
-    public void enemyRight2(){
-        isEnemyBullet = true;
-        bullety += speed / Math.sqrt(2);
-        bulletx += speed / Math.sqrt(2);
-    }
-    public void enemyLeft3(){
-        isEnemyBullet = true;
-        bullety += speed*1.25 / Math.sqrt(2);
-        bulletx -= speed / Math.sqrt(2);
-    }
-    public void enemyRight3(){
-        isEnemyBullet = true;
-        bullety += speed*1.25 / Math.sqrt(2);
-        bulletx += speed / Math.sqrt(2);
+        bulletx += speed;
     }
 }
