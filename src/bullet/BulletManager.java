@@ -105,7 +105,7 @@ public class BulletManager{
         Bullet.Type.ENEMYRIGHT,      // 0
         Bullet.Type.ENEMYDOWNRIGHT,  // 45°
         Bullet.Type.ENEMYDOWN,       // 90°
-        Bullet.Type.ENEMYLEFTDOWN,   // 135°
+        Bullet.Type.ENEMYDOWNLEFT,   // 135°
         Bullet.Type.ENEMYLEFT,       // 180°
         Bullet.Type.ENEMYUPLEFT,     // 225°
         Bullet.Type.ENEMYUP,         // 270°

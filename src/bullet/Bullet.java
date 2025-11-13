@@ -24,7 +24,7 @@ public class Bullet {
     public double distance;
     Player player;
     public enum Type{
-        ENEMYDOWN, ENEMYLEFT, ENEMYDOWNRIGHT, ENEMYLEFTDOWN, ENEMYUPLEFT, ENEMYUPRIGHT, ENEMYRIGHT, PLAYER, ENEMYUP
+        ENEMYDOWN, ENEMYLEFT, ENEMYDOWNRIGHT, ENEMYDOWNLEFT, ENEMYUPLEFT, ENEMYUPRIGHT, ENEMYRIGHT, PLAYER, ENEMYUP
     }
     public Type type;
     public Type getType() { return type; }
