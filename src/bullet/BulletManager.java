@@ -74,6 +74,19 @@ public class BulletManager{
                 case ENEMYRIGHT:
                     b.enemyRight();
                     break;
+                case ENEMYUPRIGHT:
+                    b.enemyUpRight();
+                    break;
+                case ENEMYUPLEFT:
+                    b.enemyUpLeft();
+                    break;
+                case ENEMYDOWNRIGHT:
+                    b.enemyDownRight();
+                    break;
+                case ENEMYDOWNLEFT:
+                    b.enemyDownLeft();
+                    break;
+
             }
             b.update();
             if (!b.bulletActive) {

@@ -89,4 +89,28 @@ public class Bullet {
         isEnemyBullet = true;
         bulletx += speed;
     }
+    public void enemyUpLeft(){
+        isEnemyBullet = true;
+        bulletx += (speed * Math.cos((3 * Math.PI)/4));
+        bullety += (speed * Math.sin((3 * Math.PI)/4));
+
+    }
+    public void enemyUpRight(){
+        isEnemyBullet = true;
+        bulletx += (speed * Math.cos((Math.PI)/4));
+        bullety += (speed * Math.sin((Math.PI)/4));
+
+    }
+    public void enemyDownLeft(){
+        isEnemyBullet = true;
+        bulletx += (speed * Math.cos((5 * Math.PI)/4));
+        bullety += (speed * Math.sin((5 * Math.PI)/4));
+
+    }
+    public void enemyDownRight(){
+        isEnemyBullet = true;
+        bulletx += (speed * Math.cos((7 * Math.PI)/4));
+        bullety += (speed * Math.sin((7 * Math.PI)/4));
+
+    }
 }
