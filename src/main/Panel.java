@@ -107,9 +107,6 @@ public class Panel extends JPanel implements Runnable{
         if(player.playerActive == false){
             bg.end(g2);
         }
-        if(enemyManager.boss == true){
-            enemy.healthBar(g2);
-        }
         g2.dispose();
     }
 }

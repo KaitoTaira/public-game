@@ -31,18 +31,18 @@ public class Enemy extends Entity{
 
     public void update(){
         timer ++;
-        // if(timer == 30){
-        //     enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-        //     enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-        //     enemy.add(new EnemyManager(300, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        if(timer == 30){
+            enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(300, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
             
-        // }
-        // if(timer == 3 * second){
-        //     enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-        //     enemy.add(new EnemyManager(400, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        //     enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-        // }
-        if(timer == 3*second){
+        }
+        if(timer == 3 * second){
+            enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(400, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        }
+        if(timer == 5*second){
             enemy.add(new EnemyManager(150, -100, enemyImage, panel, EnemyManager.Type.CENTER, true));
         }
         for (int i = 0; i < enemy.size(); i++) {
@@ -90,10 +90,6 @@ public class Enemy extends Entity{
             e.draw(g2);
         }
         
-    }
-    public void healthBar(Graphics2D g2){
-        g2.drawImage(enemyImage, x, y, enemyManager.health, 10, null);
-        System.out.println("HELEHOBAR");
     }
     public ArrayList<EnemyManager> getEnemy() {
     return enemy;

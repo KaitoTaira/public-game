@@ -35,7 +35,6 @@ public class EnemyManager {
     }
 
     public void update(){
-        // System.out.println(health);
         if(health <= 0){
             enemyActive = false;
         }
