@@ -53,9 +53,15 @@ public class Bullet {
         double distanceX = enemyCenterX - bulletCenterX;
         double distanceY = enemyCenterY - bulletCenterY;
         this.distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-        if(distance < 30 && !isEnemyBullet){
+        if(distance < 40 && !isEnemyBullet){
+            if(enemyManager.boss){
+                enemyManager.health -= 1;
+            }
+            else {
             enemyManager.enemyActive = false;
             bulletActive = false;
+            }
+            
             }
         }
         double playerCenterX = player.x + 24.0;
@@ -65,7 +71,7 @@ public class Bullet {
         double playerDistanceX = playerCenterX - bulletCenterX;
         double playerDistanceY = playerCenterY - bulletCenterY;
         this.distance = Math.sqrt((playerDistanceX * playerDistanceX) + (playerDistanceY * playerDistanceY));
-        if(distance < 15 && isEnemyBullet){
+        if(distance < 10 && isEnemyBullet){
             player.playerActive = false;
             bulletActive = false;
             }

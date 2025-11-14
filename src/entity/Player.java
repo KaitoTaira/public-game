@@ -63,22 +63,32 @@ public class Player extends Entity{
 
         if(input.upPressed == true){
             direction = "up";
+            if(y > 0){
             y -= speed;
+            }
+            
         }
 
         if(input.downPressed == true){
             direction = "down";
+            if(y < 576 - panel.tileSize){
             y += speed;
+            }
+
         }
 
         if(input.leftPressed == true){
             direction = "left";
+            if(x > 0){
             x -= speed;
+            }
         }
 
         if(input.rightPressed == true){
             direction = "right";
+            if(x < 576 - panel.tileSize){
             x += speed;
+            }
         }
 
         if(input.upPressed && input.leftPressed){

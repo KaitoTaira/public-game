@@ -31,19 +31,23 @@ public class Enemy extends Entity{
 
     public void update(){
         timer ++;
-        if(timer == 30){
-            enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
+        // if(timer == 30){
+        //     enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager(300, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
             
+        // }
+        // if(timer == 3 * second){
+        //     enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager(400, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        // }
+        if(timer == 3*second){
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.CENTER, true));
         }
-        if(timer == 3 * second){
-            enemy.add(new EnemyManager(400, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(300, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
+        else if(enemyManager.health == 0){
+            enemyManager.enemyActive = false;
         }
-        if(timer == 5*second){
-            enemy.add(new EnemyManager(300, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
-            enemy.add(new EnemyManager(200, -100, enemyImage, panel, EnemyManager.Type.LEFT));
-        }
-        
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
             switch(e.getType()){

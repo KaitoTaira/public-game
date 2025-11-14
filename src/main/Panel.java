@@ -29,7 +29,7 @@ public class Panel extends JPanel implements Runnable{
     public int startX = player.x;
     public int startY = player.y;
     
-    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, EnemyManager.Type.LEFT);
+    EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, EnemyManager.Type.LEFT, false);
     Enemy enemy = new Enemy(this, enemyManager);
     public int enemyStartX = enemy.x;
     public int enemyStartY = enemy.y;

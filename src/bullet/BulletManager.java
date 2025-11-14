@@ -17,7 +17,7 @@ public class BulletManager{
     ArrayList<Bullet> bullets = new ArrayList<>();
     int cooldown = 0;
     int cooldownMax = 10;
-    BufferedImage bulletImage;
+    BufferedImage bulletImage, playerBulletImage;
     Panel p;
     Player player;
     Bullet bullet;
@@ -42,6 +42,7 @@ public class BulletManager{
         this.enemy = enemy;
         try{
             bulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/bullet.png"));
+            playerBulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/playerbullet.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -99,7 +100,7 @@ public class BulletManager{
     }
     
     public void playerShoot(){
-        bullets.add(new Bullet(player.x, player.y, bulletImage, p, enemy, enemyManager, Bullet.Type.PLAYER, player));
+        bullets.add(new Bullet(player.x, player.y, playerBulletImage, p, enemy, enemyManager, Bullet.Type.PLAYER, player));
     }
     public void enemyShoot(){
         double radius = 20;
@@ -132,7 +133,7 @@ public class BulletManager{
                     g2.drawImage(b.image, b.bulletx, b.bullety, bulletwidth, bulletheight, null);
                 }  
                 else{
-                g2.drawImage(b.image, b.bulletx -25, b.bullety - 75, bulletwidth, bulletheight, null);
+                g2.drawImage(playerBulletImage, b.bulletx -25, b.bullety - 75, bulletwidth, bulletheight, null);
             }
         }
         }

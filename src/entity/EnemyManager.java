@@ -21,17 +21,21 @@ public class EnemyManager {
     public int second = 60;
     public boolean enemyLeft;
     public boolean enemyRight;
+    public boolean boss;
+    public int health = 10;
 
-    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type) {
+    public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type, boolean boss) {
         this.enemyX = startX;
         this.enemyY = startY;
         this.image = img;
         this.panel = panel;
         this.enemyActive = true;
         this.type = type;
+        this.boss = boss;
     }
 
     public void update(){
+        System.out.println(health);
         t++;
         if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;
@@ -62,10 +66,10 @@ public class EnemyManager {
         }
     }
     public void center(){
-        if(t <= 3 * second){
+        if(t <= 1 * second){
             enemyY += 3;
         }
-        else if(t <= 10 * second){
+        else if(t < 100 * second){
             enemyY += 0;
         }
     }
