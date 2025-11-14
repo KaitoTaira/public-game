@@ -45,27 +45,27 @@ public class EnemyManager {
     }
     public void left(){
         enemyLeft = true;
-        if(t <= 1 * second){
+        if(t <= 3 * second){
             enemyY += 3;
         }
-        else if(t <= 5 * second){
+        else if(t <= 10 * second){
             enemyX -= 1;
-        } 
+        }
     }
     public void right(){
         enemyRight = true;
-        if(t <= 1 * second){
+        if(t <= 3 * second){
             enemyY += 3;
         }
-        else if(t <= 5 * second){
+        else if(t <= 10 * second){
             enemyX += 1;
-        } 
+        }
     }
     public void center(){
-        if(t <= 2 * second){
+        if(t <= 3 * second){
             enemyY += 3;
         }
-        else if(t <= 5 * second){
+        else if(t <= 10 * second){
             enemyY += 0;
         }
     }

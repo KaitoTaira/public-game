@@ -17,7 +17,7 @@ public class Bullet {
     public int bulletheight = 100;
     public boolean bulletActive;
     public boolean isEnemyBullet;
-    int speed = 4;
+    int speed = 2;
     Panel panel;
     Enemy enemy;
     EnemyManager enemyManager;
@@ -41,15 +41,15 @@ public class Bullet {
     }
 
     public void update(){
-        if(bullety > 576 || (bulletx < 0 || bulletx > 576)){
+        if((bullety > 576 || bullety < 0) || (bulletx < 0 || bulletx > 576)){
             bulletActive = false;
         }
         
         for(EnemyManager enemyManager : enemy.getEnemy()){
         double enemyCenterX = enemyManager.enemyX + 24.0;
         double enemyCenterY = enemyManager.enemyY + 24.0;
-        double bulletCenterX = bulletx + (panel.tileSize/2 - 5);
-        double bulletCenterY = bullety - 30;
+        double bulletCenterX = bulletx + bulletwidth / 2.0;
+        double bulletCenterY = bullety + bulletheight / 2.0;
         double distanceX = enemyCenterX - bulletCenterX;
         double distanceY = enemyCenterY - bulletCenterY;
         this.distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
@@ -60,18 +60,17 @@ public class Bullet {
         }
         double playerCenterX = player.x + 24.0;
         double playerCenterY = player.y + 24.0;
-        double bulletCenterX = bulletx + (panel.tileSize/2 - 5);
-        double bulletCenterY = bullety - 30;
+        double bulletCenterX = bulletx + bulletwidth / 2.0;
+        double bulletCenterY = bullety + bulletheight / 2.0;
         double playerDistanceX = playerCenterX - bulletCenterX;
         double playerDistanceY = playerCenterY - bulletCenterY;
         this.distance = Math.sqrt((playerDistanceX * playerDistanceX) + (playerDistanceY * playerDistanceY));
-        if(distance < 25 && isEnemyBullet){
+        if(distance < 15 && isEnemyBullet){
             player.playerActive = false;
             bulletActive = false;
             }
     }
     public void draw(Graphics2D g2){
-      
     }
     public void player(){
         isEnemyBullet = false;
@@ -112,5 +111,9 @@ public class Bullet {
         bulletx += (speed * Math.cos((7 * Math.PI)/4));
         bullety += (speed * Math.sin((7 * Math.PI)/4));
 
+    }
+    public void enemyUp(){
+        isEnemyBullet = true;
+        bullety += speed * 2;
     }
 }

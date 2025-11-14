@@ -56,7 +56,7 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer % (2 * second) == 0){
+        if(timer % (30) == 0){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -85,6 +85,9 @@ public class BulletManager{
                     break;
                 case ENEMYDOWNLEFT:
                     b.enemyDownLeft();
+                    break;
+                case ENEMYUP:
+                    b.enemyUp();
                     break;
 
             }

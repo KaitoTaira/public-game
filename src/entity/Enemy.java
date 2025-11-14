@@ -33,11 +33,15 @@ public class Enemy extends Entity{
         timer ++;
         if(timer == 30){
             enemy.add(new EnemyManager(100, -100, enemyImage, panel, EnemyManager.Type.LEFT));
+            
         }
         if(timer == 3 * second){
             enemy.add(new EnemyManager(400, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
+            enemy.add(new EnemyManager(300, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
         }
         if(timer == 5*second){
+            enemy.add(new EnemyManager(300, -100, enemyImage, panel, EnemyManager.Type.RIGHT));
+            enemy.add(new EnemyManager(200, -100, enemyImage, panel, EnemyManager.Type.LEFT));
         }
         
         for (int i = 0; i < enemy.size(); i++) {
