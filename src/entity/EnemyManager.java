@@ -22,7 +22,7 @@ public class EnemyManager {
     public boolean enemyLeft;
     public boolean enemyRight;
     public boolean boss;
-    public int health = 10;
+    public int health = 100;
 
     public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type, boolean boss) {
         this.enemyX = startX;

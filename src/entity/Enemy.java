@@ -45,7 +45,7 @@ public class Enemy extends Entity{
         if(timer == 3*second){
             enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.CENTER, true));
         }
-        else if(enemyManager.health == 0){
+        else if(enemyManager.health <= 0){
             enemyManager.enemyActive = false;
         }
         for (int i = 0; i < enemy.size(); i++) {
@@ -91,6 +91,9 @@ public class Enemy extends Entity{
     public void draw(Graphics2D g2){
         for (EnemyManager e: enemy){
             e.draw(g2);
+        }
+        if(enemyManager.boss){
+            g2.fillRect(0, 0, enemyManager.health, panel.tileSize);
         }
         
     }
