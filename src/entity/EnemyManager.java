@@ -35,7 +35,10 @@ public class EnemyManager {
     }
 
     public void update(){
-        System.out.println(health);
+        // System.out.println(health);
+        if(health <= 0){
+            enemyActive = false;
+        }
         t++;
         if(enemyY > 576 || (enemyX < 0 || enemyX > 576)){
             enemyActive = false;

@@ -43,10 +43,7 @@ public class Enemy extends Entity{
         //     enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
         // }
         if(timer == 3*second){
-            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.CENTER, true));
-        }
-        else if(enemyManager.health <= 0){
-            enemyManager.enemyActive = false;
+            enemy.add(new EnemyManager(150, -100, enemyImage, panel, EnemyManager.Type.CENTER, true));
         }
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
@@ -92,10 +89,11 @@ public class Enemy extends Entity{
         for (EnemyManager e: enemy){
             e.draw(g2);
         }
-        if(enemyManager.boss){
-            g2.fillRect(0, 0, enemyManager.health, panel.tileSize);
-        }
         
+    }
+    public void healthBar(Graphics2D g2){
+        g2.drawImage(enemyImage, x, y, enemyManager.health, 10, null);
+        System.out.println("HELEHOBAR");
     }
     public ArrayList<EnemyManager> getEnemy() {
     return enemy;
