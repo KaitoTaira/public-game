@@ -41,7 +41,7 @@ public class Bullet {
     }
 
     public void update(){
-        if((bullety > 576 || bullety < 0) || (bulletx < 0 || bulletx > 576)){
+        if((bullety > 576 || bullety < -10) || (bulletx < -10 || bulletx > 576)){
             bulletActive = false;
         }
         
@@ -64,8 +64,8 @@ public class Bullet {
             
             }
         }
-        double playerCenterX = player.x + panel.tileSize;
-        double playerCenterY = player.y + panel.tileSize;
+        double playerCenterX = player.x + panel.tileSize/2;
+        double playerCenterY = player.y + panel.tileSize/2;
         double bulletCenterX = bulletx + bulletwidth / 2.0;
         double bulletCenterY = bullety + bulletheight / 2.0;
         double playerDistanceX = playerCenterX - bulletCenterX;
@@ -84,13 +84,7 @@ public class Bullet {
     }
     public void enemyDown(){
         isEnemyBullet = true;
-        if(!enemyManager.boss){
         bullety += speed;
-        }
-        else{
-            bulletx += (speed * Math.cos((5 * Math.PI)/4));
-            bullety += (speed * Math.sin((5 * Math.PI)/4));
-        }
     }
     public void enemyLeft(){
         isEnemyBullet = true;
@@ -126,12 +120,6 @@ public class Bullet {
     }
     public void enemyUp(){
         isEnemyBullet = true;
-        if(!enemyManager.boss){
-        bullety += speed * 2;
-        }
-        else{
-           bulletx += (speed * Math.cos((7 * Math.PI)/4));
-            bullety += (speed * Math.sin((7 * Math.PI)/4));
-        }
+        bullety -= speed;
     }
 }

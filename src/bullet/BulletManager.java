@@ -57,7 +57,7 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer % (second) == 0){
+        if(timer % (15) == 0){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
