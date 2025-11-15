@@ -120,7 +120,7 @@ public class BulletManager{
         double angle = i * 2 * Math.PI / num;
         double enemyX = enemyManager.enemyX + (radius * Math.cos(angle));
         double enemyY = enemyManager.enemyY + (radius * Math.sin(angle));
-        bullets.add(new Bullet((int)enemyX, (int)enemyY, bulletImage, p, enemy, enemyManager, types[i], player));
+        bullets.add(new Bullet((int)enemyX - (p.tileSize/2), (int)enemyY, bulletImage, p, enemy, enemyManager, types[i], player));
         }
     }
     }

@@ -46,14 +46,14 @@ public class Bullet {
         }
         
         for(EnemyManager enemyManager : enemy.getEnemy()){
-        double enemyCenterX = enemyManager.enemyX + 24.0;
-        double enemyCenterY = enemyManager.enemyY + 24.0;
+        double enemyCenterX = enemyManager.enemyX + panel.tileSize;
+        double enemyCenterY = enemyManager.enemyY + panel.tileSize;
         double bulletCenterX = bulletx + bulletwidth / 2.0;
         double bulletCenterY = bullety + bulletheight / 2.0;
         double distanceX = enemyCenterX - bulletCenterX;
         double distanceY = enemyCenterY - bulletCenterY;
         this.distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-        if(distance < 40 && !isEnemyBullet){
+        if(distance < 30 && !isEnemyBullet){
             if(enemyManager.boss){
                 enemyManager.health -= 1;
             }
@@ -64,8 +64,8 @@ public class Bullet {
             
             }
         }
-        double playerCenterX = player.x + 24.0;
-        double playerCenterY = player.y + 24.0;
+        double playerCenterX = player.x + panel.tileSize;
+        double playerCenterY = player.y + panel.tileSize;
         double bulletCenterX = bulletx + bulletwidth / 2.0;
         double bulletCenterY = bullety + bulletheight / 2.0;
         double playerDistanceX = playerCenterX - bulletCenterX;
@@ -84,7 +84,13 @@ public class Bullet {
     }
     public void enemyDown(){
         isEnemyBullet = true;
+        if(!enemyManager.boss){
         bullety += speed;
+        }
+        else{
+            bulletx += (speed * Math.cos((5 * Math.PI)/4));
+            bullety += (speed * Math.sin((5 * Math.PI)/4));
+        }
     }
     public void enemyLeft(){
         isEnemyBullet = true;
@@ -120,6 +126,12 @@ public class Bullet {
     }
     public void enemyUp(){
         isEnemyBullet = true;
+        if(!enemyManager.boss){
         bullety += speed * 2;
+        }
+        else{
+           bulletx += (speed * Math.cos((7 * Math.PI)/4));
+            bullety += (speed * Math.sin((7 * Math.PI)/4));
+        }
     }
 }
