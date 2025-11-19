@@ -34,15 +34,21 @@ public class Enemy extends Entity{
         if(timer == 30){
             enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
             enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager(300, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
             
         }
         if(timer == 3 * second){
-            enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(500, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(450, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
             enemy.add(new EnemyManager(400, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
         }
-        if(timer == 6*second){
+        if(timer == 6 * second){
+            enemy.add(new EnemyManager(400, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(350, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(250, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        }
+        if(timer == 60 *second){
             enemy.add(new EnemyManager(150, -100, enemyImage, panel, EnemyManager.Type.CENTER, true));
         }
         for (int i = 0; i < enemy.size(); i++) {
@@ -88,7 +94,7 @@ public class Enemy extends Entity{
     public void draw(Graphics2D g2){
         for (EnemyManager e: enemy){
             e.draw(g2);
-            if(timer > 6 * second && timer < 26 * second){
+            if(timer > 60 * second && timer < 90 * second){
             g2.fillRect(10, 10, e.health, 10);
            }
            
