@@ -48,6 +48,30 @@ public class Enemy extends Entity{
             enemy.add(new EnemyManager(200, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
             enemy.add(new EnemyManager(250, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
         }
+        if(timer == 9 * second){
+            enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(500, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(450, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        }
+        if(timer == 12 * second){
+            enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(500, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(450, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        }
+        if(timer == 14 * second){
+            enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(500, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(450, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        }
+        if(timer == 16 * second){
+            enemy.add(new EnemyManager(100, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(150, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+            enemy.add(new EnemyManager(500, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+            enemy.add(new EnemyManager(450, -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        }
         if(timer == 60 *second){
             enemy.add(new EnemyManager(150, -100, enemyImage, panel, EnemyManager.Type.CENTER, true));
         }

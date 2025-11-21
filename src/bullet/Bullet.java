@@ -41,7 +41,7 @@ public class Bullet {
     }
 
     public void update(){
-        if((bullety > 576 || bullety < -10) || (bulletx < -10 || bulletx > 576)){
+        if((bullety > 576 || bullety < -100) || (bulletx < -100 || bulletx > 576)){
             bulletActive = false;
         }
         
@@ -71,12 +71,13 @@ public class Bullet {
         double playerDistanceX = playerCenterX - bulletCenterX;
         double playerDistanceY = playerCenterY - bulletCenterY;
         this.distance = Math.sqrt((playerDistanceX * playerDistanceX) + (playerDistanceY * playerDistanceY));
-        if(distance < 10 && isEnemyBullet){
+        if(distance < 5 && isEnemyBullet){
             player.playerActive = false;
             bulletActive = false;
             }
     }
     public void draw(Graphics2D g2){
+
     }
     public void player(){
         isEnemyBullet = false;

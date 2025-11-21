@@ -63,7 +63,7 @@ public class Player extends Entity{
 
         if(input.upPressed == true){
             direction = "up";
-            if(y > 0){
+            if(y > -20){
             y -= speed;
             }
             
@@ -71,7 +71,7 @@ public class Player extends Entity{
 
         if(input.downPressed == true){
             direction = "down";
-            if(y < 576 - panel.tileSize){
+            if(y < 596 - panel.tileSize){
             y += speed;
             }
 
@@ -79,14 +79,14 @@ public class Player extends Entity{
 
         if(input.leftPressed == true){
             direction = "left";
-            if(x > 0){
+            if(x > -20){
             x -= speed;
             }
         }
 
         if(input.rightPressed == true){
             direction = "right";
-            if(x < 576 - panel.tileSize){
+            if(x < 596 - panel.tileSize){
             x += speed;
             }
         }
@@ -173,7 +173,8 @@ public class Player extends Entity{
             }
             break;
         }
-
+        int playerCenterX = x + panel.tileSize/2;
+        int playerCenterY = y + panel.tileSize/2;
         g2.drawImage(image, x, y, panel.tileSize, panel.tileSize, null);
     }
 }
