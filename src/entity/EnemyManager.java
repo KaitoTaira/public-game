@@ -22,7 +22,7 @@ public class EnemyManager {
     public boolean enemyLeft;
     public boolean enemyRight;
     public boolean boss;
-    public int health = 556;
+    public int health = 576;
 
     public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type, boolean boss) {
         this.enemyX = startX;
@@ -77,10 +77,10 @@ public class EnemyManager {
         else if (t <= 8 * second){
             enemyX += 1;
         }
-        else if(t <= 18 * second){
+        else if(t <= 88 * second){
             enemyX += 0;
         }
-        else if(t <= 20 * second){
+        else if(t <= 90 * second){
             enemyX += 5;
         }
     }
