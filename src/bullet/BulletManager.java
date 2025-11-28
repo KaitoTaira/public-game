@@ -121,6 +121,12 @@ public class BulletManager{
         double enemyX = enemyManager.enemyX + (radius * Math.cos(angle));
         double enemyY = enemyManager.enemyY + (radius * Math.sin(angle));
         bullets.add(new Bullet((int)enemyX - (p.tileSize/2), (int)enemyY, bulletImage, p, enemy, enemyManager, types[i], player));
+        if(enemyManager.boss){
+            bullets.add(new Bullet((int)enemyX - (p.tileSize/2) + 250, (int)player.y - p.tileSize/2, bulletImage, p, enemy, enemyManager, types[i], player));
+            bullets.add(new Bullet((int)enemyX - (p.tileSize/2) - 250, (int)player.y - p.tileSize/2, bulletImage, p, enemy, enemyManager, types[i], player));
+            // bullets.add(new Bullet(0, 0, bulletImage, p, enemy, enemyManager, types[i], player));
+            // bullets.add(new Bullet(576, 0, bulletImage, p, enemy, enemyManager, types[i], player));
+        }
         }
     }
     }
