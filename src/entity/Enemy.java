@@ -143,7 +143,7 @@ public class Enemy extends Entity{
         for (EnemyManager e: enemy){
             e.draw(g2);
             if(timer > 1 * second && timer < 60 * second){
-            g2.fillRect(10, 10, e.health /3, 10);
+            g2.fillRect(10, 10, e.health, 10);
            }
            
         }
