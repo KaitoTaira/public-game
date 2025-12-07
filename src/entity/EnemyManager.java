@@ -51,12 +51,6 @@ public class EnemyManager {
             g2.drawImage(image, enemyX, enemyY, 50, 50, null);
         }
     }
-     public void getEnemyImage(){
-        try{
-            explosion = ImageIO.read(getClass().getResourceAsStream("/enemy/explosion.png"));
-        }catch(IOException e){
-            e.printStackTrace();
-        }
     }
     public void left(){
         enemyLeft = true;
