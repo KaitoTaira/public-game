@@ -2,6 +2,8 @@ package entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import main.Panel;
 
 
@@ -12,7 +14,7 @@ public class EnemyManager {
     Panel panel;
     public int enemyX;
     public int enemyY;
-    public BufferedImage image;
+    public BufferedImage image, explosion;
     public boolean enemyActive;
     public double distance;
     public Type type;
@@ -49,26 +51,39 @@ public class EnemyManager {
             g2.drawImage(image, enemyX, enemyY, 50, 50, null);
         }
     }
+     public void getEnemyImage(){
+        try{
+            explosion = ImageIO.read(getClass().getResourceAsStream("/enemy/explosion.png"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     public void left(){
         enemyLeft = true;
-        if(t <= 3 * second){
-            enemyY += 3;
+        if(enemyY < 100){
+        enemyY += 3;
         }
-        else if(t <= 10 * second){
-            enemyX -= 1;
+        else if(enemyY >= 100){
+            enemyY = 100;
+        }
+        if(t > 4 * second){
+            enemyX -= 3;
         }
     }
     public void right(){
         enemyRight = true;
-        if(t <= 3 * second){
-            enemyY += 3;
+        if(enemyY < 100){
+        enemyY += 3;
         }
-        else if(t <= 10 * second){
-            enemyX += 1;
+        else if(enemyY >= 100){
+            enemyY = 100;
+        }
+        if(t > 4 * second){
+            enemyX += 3;
         }
     }
     public void center(){
-        if(t <= 1 * second){
+        if(t <= 2 * second){
             enemyY += 2;
         }
         else if(t <= 5 * second){

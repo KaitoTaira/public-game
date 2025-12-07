@@ -57,41 +57,11 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer % (15) == 0){
+        if(timer % (1*second) == 0){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
             Bullet b = bullets.get(i);
-            switch(b.getType()){
-                case PLAYER:
-                    b.player();
-                    break;
-                case ENEMYDOWN:
-                    b.enemyDown();
-                    break;
-                case ENEMYLEFT:
-                    b.enemyLeft();
-                    break;
-                case ENEMYRIGHT:
-                    b.enemyRight();
-                    break;
-                case ENEMYUPRIGHT:
-                    b.enemyUpRight();
-                    break;
-                case ENEMYUPLEFT:
-                    b.enemyUpLeft();
-                    break;
-                case ENEMYDOWNRIGHT:
-                    b.enemyDownRight();
-                    break;
-                case ENEMYDOWNLEFT:
-                    b.enemyDownLeft();
-                    break;
-                case ENEMYUP:
-                    b.enemyUp();
-                    break;
-
-            }
             b.update();
             if (!b.bulletActive) {
                 bullets.remove(i);
@@ -100,31 +70,16 @@ public class BulletManager{
     }
     
     public void playerShoot(){
-        bullets.add(new Bullet(player.x, player.y, playerBulletImage, p, enemy, enemyManager, Bullet.Type.PLAYER, player));
+        bullets.add(new Bullet(player.x, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER));
     }
     public void enemyShoot(){
-        double radius = 20;
-        int num = 8;
-        Bullet.Type[] types = {
-        Bullet.Type.ENEMYRIGHT,      // 0
-        Bullet.Type.ENEMYDOWNRIGHT,  // 45°
-        Bullet.Type.ENEMYDOWN,       // 90°
-        Bullet.Type.ENEMYDOWNLEFT,   // 135°
-        Bullet.Type.ENEMYLEFT,       // 180°
-        Bullet.Type.ENEMYUPLEFT,     // 225°
-        Bullet.Type.ENEMYUP,         // 270°
-        Bullet.Type.ENEMYUPRIGHT     // 315°
-};
+        int num = 16;
         for(EnemyManager enemyManager : enemy.getEnemy()){
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
-        double enemyX = enemyManager.enemyX + (radius * Math.cos(angle));
-        double enemyY = enemyManager.enemyY + (radius * Math.sin(angle));
-        bullets.add(new Bullet((int)enemyX - (p.tileSize/2), (int)enemyY, bulletImage, p, enemy, enemyManager, types[i], player));
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY + p.tileSize/2, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
         if(enemyManager.boss){
-            bullets.add(new Bullet((int)enemyX - (p.tileSize/2) + 250, player.y - p.tileSize/2, bulletImage, p, enemy, enemyManager, types[i], player));
-            bullets.add(new Bullet((int)enemyX - (p.tileSize/2) - 250, player.y - p.tileSize/2, bulletImage, p, enemy, enemyManager, types[i], player));
-            bullets.add(new Bullet(player.x - p.tileSize/2, (int)enemyY - (p.tileSize/2), bulletImage, p, enemy, enemyManager, types[i], player));
+          num = 32;
         }
         }
     }
@@ -135,10 +90,10 @@ public class BulletManager{
         for (Bullet b: bulletsCopy){
             if(b.bulletActive){
                 if(b.isEnemyBullet){
-                    g2.drawImage(b.image, b.bulletx, b.bullety, bulletwidth, bulletheight, null);
+                    g2.drawImage(b.image, (int)b.bulletx, (int)b.bullety, bulletwidth, bulletheight, null);
                 }  
                 else{
-                g2.drawImage(playerBulletImage, b.bulletx -25, b.bullety - 75, bulletwidth, bulletheight, null);
+                g2.drawImage(playerBulletImage, (int)b.bulletx -25, (int)b.bullety - 75, bulletwidth, bulletheight, null);
             }
         }
         }

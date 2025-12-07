@@ -10,25 +10,30 @@ import main.Panel;
 public class Bullet {
 
     public BufferedImage image;
-    public  boolean collision = false;
-    public int bulletx;
-    public int bullety;
+    public boolean collision = false;
+    public double bulletx;
+    public double bullety;
     public int bulletwidth = 100;
     public int bulletheight = 100;
+    public int speed = 2;
     public boolean bulletActive;
     public boolean isEnemyBullet;
-    int speed = 2;
+    public double dx;
+    public double dy;
+    public double distance;
+   
+
     Panel panel;
     Enemy enemy;
     EnemyManager enemyManager;
-    public double distance;
     Player player;
+
     public enum Type{
-        ENEMYDOWN, ENEMYLEFT, ENEMYDOWNRIGHT, ENEMYDOWNLEFT, ENEMYUPLEFT, ENEMYUPRIGHT, ENEMYRIGHT, PLAYER, ENEMYUP
+         PLAYER, ENEMY
     }
     public Type type;
     public Type getType() { return type; }
-    public Bullet(int startX, int startY, BufferedImage img, Panel panel, Enemy enemy, EnemyManager enemyManager, Type type, Player player) {
+    public Bullet(int startX, int startY, BufferedImage img, Panel panel, Enemy enemy, EnemyManager enemyManager, double angle, Player player, Type type) {
         this.bulletx = startX;
         this.bullety = startY;
         this.image = img;
@@ -38,9 +43,23 @@ public class Bullet {
         this.enemyManager = enemyManager;
         this.player = player;
         this.type = type;
+
+        if(type == Type.ENEMY){
+            dx = Math.cos(angle) * speed;
+            dy = Math.sin(angle) * speed;
+            this.isEnemyBullet = true;
+        }
+
+        else{
+            dx = 0;
+            dy = -7;
+            this.isEnemyBullet = false;
+        }
     }
 
     public void update(){
+        bulletx += dx;
+        bullety += dy;
         if((bullety > 576 || bullety < -100) || (bulletx < -100 || bulletx > 576)){
             bulletActive = false;
         }
@@ -78,49 +97,5 @@ public class Bullet {
     }
     public void draw(Graphics2D g2){
 
-    }
-    public void player(){
-        isEnemyBullet = false;
-        bullety -= 7;
-    }
-    public void enemyDown(){
-        isEnemyBullet = true;
-        bullety += speed;
-    }
-    public void enemyLeft(){
-        isEnemyBullet = true;
-        bulletx -= speed;
-    }
-    public void enemyRight(){
-        isEnemyBullet = true;
-        bulletx += speed;
-    }
-    public void enemyUpLeft(){
-        isEnemyBullet = true;
-        bulletx += (speed * Math.cos((3 * Math.PI)/4));
-        bullety += (speed * Math.sin((3 * Math.PI)/4));
-
-    }
-    public void enemyUpRight(){
-        isEnemyBullet = true;
-        bulletx += (speed * Math.cos((Math.PI)/4));
-        bullety += (speed * Math.sin((Math.PI)/4));
-
-    }
-    public void enemyDownLeft(){
-        isEnemyBullet = true;
-        bulletx += (speed * Math.cos((5 * Math.PI)/4));
-        bullety += (speed * Math.sin((5 * Math.PI)/4));
-
-    }
-    public void enemyDownRight(){
-        isEnemyBullet = true;
-        bulletx += (speed * Math.cos((7 * Math.PI)/4));
-        bullety += (speed * Math.sin((7 * Math.PI)/4));
-
-    }
-    public void enemyUp(){
-        isEnemyBullet = true;
-        bullety -= speed;
     }
 }
