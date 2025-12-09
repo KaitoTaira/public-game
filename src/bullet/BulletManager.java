@@ -77,9 +77,14 @@ public class BulletManager{
         for(EnemyManager enemyManager : enemy.getEnemy()){
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
+        if(!enemyManager.boss){
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
-        if(enemyManager.boss){
-          num = 32;
+        }
+        else if(enemyManager.boss){
+        num = 32;
+        
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 - 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 + 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
         }
         }
     }
