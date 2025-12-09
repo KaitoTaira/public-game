@@ -57,7 +57,7 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer % (1*second) == 0){
+        if(timer % (1 * second) == 0){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -77,7 +77,7 @@ public class BulletManager{
         for(EnemyManager enemyManager : enemy.getEnemy()){
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY + p.tileSize/2, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
         if(enemyManager.boss){
           num = 32;
         }

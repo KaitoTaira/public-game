@@ -2,8 +2,6 @@ package entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import main.Panel;
 
 
@@ -51,7 +49,6 @@ public class EnemyManager {
             g2.drawImage(image, enemyX, enemyY, 50, 50, null);
         }
     }
-    }
     public void left(){
         enemyLeft = true;
         if(enemyY < 100){
@@ -94,3 +91,4 @@ public class EnemyManager {
         }
     }
 }
+
