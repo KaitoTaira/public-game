@@ -46,7 +46,7 @@ public class EnemyManager {
     }
     public void draw(Graphics2D g2){
         if(enemyActive){
-            g2.drawImage(image, enemyX, enemyY, 50, 50, null);
+            g2.drawImage(image, enemyX, enemyY, 40, 40, null);
         }
     }
     public void left(){
