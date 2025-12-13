@@ -15,6 +15,7 @@ public class Player extends Entity{
     int diagonalSpeed = speed /100;
     public boolean shoot = false;
     public boolean playerActive = true;
+    public int whiteMonsterCount;
 
     public Player(Panel panel, Input input){
         this.panel = panel;

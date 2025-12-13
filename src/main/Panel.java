@@ -35,10 +35,11 @@ public class Panel extends JPanel implements Runnable{
     Enemy enemy = new Enemy(this, enemyManager);
     public int enemyStartX = enemy.x;
     public int enemyStartY = enemy.y;
-    Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager, 90, player, Bullet.Type.PLAYER);
-    BulletManager bulletManager = new BulletManager(this, player, bullet, enemyManager, enemy);
-    WhiteMonster whitemonster = new WhiteMonster();
-    WhiteMonsterManager whiteMonsterManager = new WhiteMonsterManager(bullet);
+    WhiteMonster whitemonster = new WhiteMonster(0.0,0.0,enemyManager, player, this);
+    WhiteMonsterManager whiteMonsterManager = new WhiteMonsterManager(enemyManager,whitemonster);
+    Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whiteMonsterManager, whitemonster);
+    BulletManager bulletManager = new BulletManager(this, player, bullet, enemyManager, enemy, whiteMonsterManager);
+    
     
     
     Thread gameThread;
@@ -108,6 +109,7 @@ public class Panel extends JPanel implements Runnable{
         player.draw(g2);
         bulletManager.draw(g2);
         enemy.draw(g2);
+        whiteMonsterManager.draw(g2);
         
         if(player.playerActive == false){
             bg.end(g2);

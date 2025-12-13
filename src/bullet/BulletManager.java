@@ -4,6 +4,8 @@ package bullet;
 import entity.Enemy;
 import entity.EnemyManager;
 import entity.Player;
+import entity.WhiteMonster;
+import entity.WhiteMonsterManager;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -22,6 +24,8 @@ public class BulletManager{
     Player player;
     Bullet bullet;
     EnemyManager enemyManager;
+    WhiteMonsterManager whitemonstermanager;
+    WhiteMonster whitemonster;
     public int bulletx;
     public int bullety;
     public int bulletwidth = 100;
@@ -34,12 +38,13 @@ public class BulletManager{
 
 
 
-    public BulletManager(Panel p, Player player, Bullet bullet, EnemyManager enemyManager, Enemy enemy){
+    public BulletManager(Panel p, Player player, Bullet bullet, EnemyManager enemyManager, Enemy enemy, WhiteMonsterManager whitemonstermanager){
         this.p = p;
         this.player = player;
         this.bullet = bullet;
         this.enemyManager = enemyManager;
         this.enemy = enemy;
+        this.whitemonstermanager = whitemonstermanager;
         try{
             bulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/bullet.png"));
             playerBulletImage = ImageIO.read(getClass().getResourceAsStream("/bullet/playerbullet.png"));
@@ -70,7 +75,7 @@ public class BulletManager{
     }
     
     public void playerShoot(){
-        bullets.add(new Bullet(player.x, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER));
+        bullets.add(new Bullet(player.x, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whitemonstermanager, whitemonster));
     }
     public void enemyShoot(){
         int num = 16;
@@ -78,13 +83,13 @@ public class BulletManager{
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
         if(!enemyManager.boss){
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
         }
         else if(enemyManager.boss){
         num = 32;
         
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 - 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 + 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY));
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 - 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
+        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 + 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
         }
         }
     }

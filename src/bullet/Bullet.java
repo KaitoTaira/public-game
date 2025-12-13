@@ -3,6 +3,8 @@ package bullet;
 import entity.Enemy;
 import entity.EnemyManager;
 import entity.Player;
+import entity.WhiteMonster;
+import entity.WhiteMonsterManager;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import main.Panel;
@@ -19,7 +21,6 @@ public class Bullet {
     public int speed = 2;
     public boolean bulletActive;
     public boolean isEnemyBullet;
-    public boolean whiteMonsterSpawned = false;
     public double dx;
     public double dy;
     public double distance;
@@ -29,13 +30,17 @@ public class Bullet {
     Enemy enemy;
     EnemyManager enemyManager;
     Player player;
+    WhiteMonsterManager whitemonstermanager;
+    WhiteMonster whitemonster;
 
     public enum Type{
          PLAYER, ENEMY
     }
     public Type type;
     public Type getType() { return type; }
-    public Bullet(int startX, int startY, BufferedImage img, Panel panel, Enemy enemy, EnemyManager enemyManager, double angle, Player player, Type type) {
+    public Bullet(int startX, int startY, BufferedImage img, Panel panel, Enemy enemy, 
+        EnemyManager enemyManager, double angle, Player player, Type type, WhiteMonsterManager whitemonstermanager,
+        WhiteMonster whitemonster) {
         this.bulletx = startX;
         this.bullety = startY;
         this.image = img;
@@ -45,6 +50,7 @@ public class Bullet {
         this.enemyManager = enemyManager;
         this.player = player;
         this.type = type;
+        this.whitemonstermanager = whitemonstermanager;
 
         if(type == Type.ENEMY){
             dx = Math.cos(angle) * speed;
@@ -60,6 +66,7 @@ public class Bullet {
     }
 
     public void update(){
+        
         bulletx += dx;
         bullety += dy;
         if((bullety > 576 || bullety < -100) || (bulletx < -100 || bulletx > 576)){
@@ -81,8 +88,10 @@ public class Bullet {
             else {
             enemyManager.enemyActive = false;
             bulletActive = false;
-            whiteMonsterSpawned = true;
-            System.out.println("spawnwed");
+            whitemonstermanager.whiteMonsterSpawned = true;
+            WhiteMonster w = new WhiteMonster(enemyCenterX, enemyCenterY, enemyManager,player, panel);
+            whitemonstermanager.whitemonsters.add(w);   
+            break;
             }
             
             }
