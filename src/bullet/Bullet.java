@@ -3,15 +3,12 @@ package bullet;
 import entity.Enemy;
 import entity.EnemyManager;
 import entity.Player;
-import entity.WhiteMonster;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import main.Panel;
 
 public class Bullet {
 
-    public ArrayList<WhiteMonster> whitemonster = new ArrayList<>();
      
     public BufferedImage image;
     public boolean collision = false;
@@ -22,6 +19,7 @@ public class Bullet {
     public int speed = 2;
     public boolean bulletActive;
     public boolean isEnemyBullet;
+    public boolean whiteMonsterSpawned = false;
     public double dx;
     public double dy;
     public double distance;
@@ -83,10 +81,8 @@ public class Bullet {
             else {
             enemyManager.enemyActive = false;
             bulletActive = false;
-                if((int)(Math.random() * 10) == 1){
-                    whitemonster.add(new WhiteMonster());
-                    System.out.println("spawnwed");
-                }
+            whiteMonsterSpawned = true;
+            System.out.println("spawnwed");
             }
             
             }

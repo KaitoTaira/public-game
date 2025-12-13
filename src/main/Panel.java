@@ -6,6 +6,8 @@ import bullet.BulletManager;
 import entity.Enemy;
 import entity.EnemyManager;
 import entity.Player;
+import entity.WhiteMonster;
+import entity.WhiteMonsterManager;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -35,6 +37,8 @@ public class Panel extends JPanel implements Runnable{
     public int enemyStartY = enemy.y;
     Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager, 90, player, Bullet.Type.PLAYER);
     BulletManager bulletManager = new BulletManager(this, player, bullet, enemyManager, enemy);
+    WhiteMonster whitemonster = new WhiteMonster();
+    WhiteMonsterManager whiteMonsterManager = new WhiteMonsterManager(bullet);
     
     
     Thread gameThread;
@@ -93,6 +97,7 @@ public class Panel extends JPanel implements Runnable{
         player.update();
         bulletManager.update();
         enemy.update();
+        whiteMonsterManager.update();
     }
 
     public void paintComponent(Graphics g){
