@@ -27,7 +27,6 @@ public void update(){
     if((whitemonsterY > 576 || whitemonsterY < -100) || (whitemonsterX < -100 || whitemonsterX > 576)){
             whiteMonsterActive = false;
         }
-    System.out.println(player.whiteMonsterCount);
     double playerCenterX = player.x + panel.tileSize/2;
     double playerCenterY = player.y + panel.tileSize/2;
     double distanceX = playerCenterX - whitemonsterX + panel.tileSize/2;
