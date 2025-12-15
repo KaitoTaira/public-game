@@ -34,7 +34,7 @@ public class Bullet {
     WhiteMonster whitemonster;
 
     public enum Type{
-         PLAYER, ENEMY
+         PLAYER, ENEMY, PLAYERLEFT, PLAYERRIGHT
     }
     public Type type;
     public Type getType() { return type; }
@@ -57,7 +57,14 @@ public class Bullet {
             dy = Math.sin(angle) * speed;
             this.isEnemyBullet = true;
         }
-
+        else if(type == Type.PLAYERLEFT){
+            dx = Math.cos(4 * Math.PI /3) * speed * 7/2;
+            dy = Math.sin(4 *Math.PI /3) * speed * 7/2;
+        }
+        else if(type == Type.PLAYERRIGHT){
+            dx = Math.cos(5 * Math.PI /3) * speed * 7/2;
+            dy = Math.sin(5 * Math.PI /3) * speed * 7/2;
+        }
         else{
             dx = 0;
             dy = -7;

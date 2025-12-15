@@ -76,9 +76,9 @@ public class BulletManager{
     
     public void playerShoot(){
         bullets.add(new Bullet(player.x, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whitemonstermanager, whitemonster));
-        if(player.whiteMonsterCount >= 5){
-            bullets.add(new Bullet(player.x + 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whitemonstermanager, whitemonster));
-            bullets.add(new Bullet(player.x - 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whitemonstermanager, whitemonster));
+        if(player.whiteMonsterCount >= 10){
+            bullets.add(new Bullet(player.x + 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYERRIGHT, whitemonstermanager, whitemonster));
+            bullets.add(new Bullet(player.x - 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYERLEFT, whitemonstermanager, whitemonster));
         }
     }
     public void enemyShoot(){
