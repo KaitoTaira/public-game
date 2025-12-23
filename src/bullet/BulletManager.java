@@ -34,6 +34,7 @@ public class BulletManager{
     public int second = 60;
     public boolean playerBullet;
     public boolean enemyBullet;
+    public int num = 16; 
     Enemy enemy;
 
 
@@ -65,6 +66,9 @@ public class BulletManager{
         if(timer % (1 * second) == 0){
             enemyShoot();
         }
+        if(enemyManager.t == 5){
+
+        }
         for (int i = bullets.size()-1; i >= 0; i--) {
             Bullet b = bullets.get(i);
             b.update();
@@ -80,23 +84,28 @@ public class BulletManager{
             bullets.add(new Bullet(player.x + 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYERRIGHT, whitemonstermanager, whitemonster));
             bullets.add(new Bullet(player.x - 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYERLEFT, whitemonstermanager, whitemonster));
         }
+        if(player.whiteMonsterCount >= 20){
+           bullets.add(new Bullet(player.x + 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whitemonstermanager, whitemonster));
+            bullets.add(new Bullet(player.x - 20, player.y, playerBulletImage, p, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whitemonstermanager, whitemonster));
+        }
     }
     public void enemyShoot(){
-        int num = 16;
         for(EnemyManager enemyManager : enemy.getEnemy()){
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
-        if(!enemyManager.boss){
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
         }
-        else if(enemyManager.boss){
+    }
+    }
+
+    public void bossShoot(){
+         for(int i = 0; i < num; i++){
+        double angle = i * 2 * Math.PI / num;
         num = 32;
         
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 - 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 + 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
-        }
-        }
-    }
+         }
     }
     
     public void draw(Graphics2D g2){

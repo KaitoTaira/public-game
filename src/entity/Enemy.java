@@ -33,60 +33,60 @@ public class Enemy extends Entity{
 
     public void update(){
         timer ++;
-        if(enemyManager.boss){
-            bossTimer = bossTimer - (1.0/60);
-        }
-        if(timer == 30){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        // if(enemyManager.boss){
+        //     bossTimer = bossTimer - (1.0/60);
+        // }
+        // if(timer == 30){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
             
-        }
-        if(timer == 3 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 6 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-        }
-        if(timer == 9 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 12 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 15 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 18 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 21 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 24 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 27 * second){
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-            enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
-        }
-        if(timer == 30 *second){
+        // }
+        // if(timer == 3 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 6 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        // }
+        // if(timer == 9 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 12 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 15 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 18 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 21 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 24 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        // if(timer == 27 * second){
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
+        // }
+        if(timer == 1 *second){
             enemy.add(new EnemyManager(100, -((int) (Math.random() * 200)), enemyImage, panel, EnemyManager.Type.CENTER, true));
         }
         for (int i = 0; i < enemy.size(); i++) {
@@ -132,7 +132,7 @@ public class Enemy extends Entity{
     public void draw(Graphics2D g2){
         for (EnemyManager e: enemy){
             e.draw(g2);
-            if(timer > 30 * second && timer < 60 * second){
+            if(timer > 1 * second && timer < 31 * second){
             g2.fillRect(10, 10, e.health, 10);
             Font font = new Font("Arial", Font.BOLD, 20);
             g2.setFont(font);
