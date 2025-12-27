@@ -74,21 +74,7 @@ public class EnemyManager {
         }
     }
     public void center(){
-        if(t <= 2 * second){
-            enemyY += 2;
-        }
-        else if(t <= 5 * second){
-            enemyY += 0;
-        }
-        else if (t <= 8 * second){
-            enemyX += 1;
-        }
-        else if(t <= 88 * second){
-            enemyX += 0;
-        }
-        else if(t <= 90 * second){
-            enemyX += 5;
-        }
+        
     }
 }
 

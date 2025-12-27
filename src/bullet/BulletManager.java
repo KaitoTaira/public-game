@@ -66,9 +66,6 @@ public class BulletManager{
         if(timer % (1 * second) == 0){
             enemyShoot();
         }
-        if(enemyManager.t == 5){
-
-        }
         for (int i = bullets.size()-1; i >= 0; i--) {
             Bullet b = bullets.get(i);
             b.update();
@@ -94,18 +91,13 @@ public class BulletManager{
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
-        }
-    }
-    }
-
-    public void bossShoot(){
-         for(int i = 0; i < num; i++){
-        double angle = i * 2 * Math.PI / num;
+        if(enemyManager.boss){
         num = 32;
-        
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 - 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 + 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
-         }
+        }
+        }
+    }
     }
     
     public void draw(Graphics2D g2){
