@@ -87,7 +87,7 @@ public class Enemy extends Entity{
         //     enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.RIGHT, false));
         // }
         if(timer == 1 *second){
-            enemy.add(new EnemyManager(576/2, -((int) (Math.random() * 200)), enemyImage, panel, EnemyManager.Type.CENTER, true));
+            enemy.add(new EnemyManager(576/2, -((int) (Math.random() * 200)), enemyImage, panel, EnemyManager.Type.BOSS, true));
         }
         for (int i = 0; i < enemy.size(); i++) {
             EnemyManager e = enemy.get(i);
@@ -98,8 +98,8 @@ public class Enemy extends Entity{
                 case RIGHT:
                     e.right();
                     break;
-                case CENTER:
-                    e.center();
+                case BOSS:
+                    e.boss();
                     break;
             }
             e.update();

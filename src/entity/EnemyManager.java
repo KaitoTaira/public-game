@@ -7,7 +7,7 @@ import main.Panel;
 
 public class EnemyManager {
     public enum Type{
-        LEFT, RIGHT, CENTER
+        LEFT, RIGHT, BOSS
     }
     Panel panel;
     public int enemyX;
@@ -23,6 +23,8 @@ public class EnemyManager {
     public boolean enemyRight;
     public boolean boss;
     public int health = 576;
+    public int move = 0;
+    public int bulletPattern = 0;
 
     public EnemyManager(int startX, int startY, BufferedImage img, Panel panel, Type type, boolean boss) {
         this.enemyX = startX;
@@ -73,8 +75,37 @@ public class EnemyManager {
             enemyX += 3;
         }
     }
-    public void center(){
+    public void boss(){
+        if(enemyY < 100){
+        enemyY += 3;
+        }
+        else if(enemyY >= 100){
+            enemyY = 100;
+        }
+        if(t >= 3 * second){
+            move = (int)(Math.random() * 3) + 1;
+            t = 0;
+        }
+        if(move == 1){
+            bossLeft();
+            bulletPattern = (int)(Math.random() * 5) + 1;
+        }
+        if(move == 2){
+            bossRight();
+            bulletPattern = (int)(Math.random() * 5) + 1;
+        }
         
+    }
+
+    public void bossLeft(){
+        if(enemyX > 0 + panel.tileSize){
+        enemyX -= 3;
+        }
+    }
+    public void bossRight(){
+        if(enemyX < 576 - panel.tileSize){
+        enemyX += 3;
+        }
     }
 }
 

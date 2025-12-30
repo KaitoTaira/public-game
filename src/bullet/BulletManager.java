@@ -90,11 +90,23 @@ public class BulletManager{
         for(EnemyManager enemyManager : enemy.getEnemy()){
             for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
+        if(!enemyManager.boss){
         bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
+        }
         if(enemyManager.boss){
         num = 32;
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 - 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2 + 10, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
+            if(enemyManager.bulletPattern == 1){
+                bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
+            }
+            if(enemyManager.bulletPattern == 2){
+                System.out.println("2");
+            }
+            if(enemyManager.bulletPattern == 3){
+                System.out.println("3");
+            }
+            if(enemyManager.bulletPattern == 4){
+                System.out.println("4");
+            }
         }
         }
     }
