@@ -35,6 +35,8 @@ public class BulletManager{
     public boolean playerBullet;
     public boolean enemyBullet;
     public int num = 16; 
+    public double spiralRotation = 0;
+    public boolean fastShooting = false;
     Enemy enemy;
 
 
@@ -63,7 +65,10 @@ public class BulletManager{
             playerShoot();
             cooldown = cooldownMax;
         }
-        if(timer % (1 * second) == 0){
+        if((timer % (5) == 0) && fastShooting){
+            enemyShoot();
+        }
+        else if(!fastShooting && (timer % (1 * second) == 0)){
             enemyShoot();
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -87,34 +92,77 @@ public class BulletManager{
         }
     }
     public void enemyShoot(){
-        for(EnemyManager enemyManager : enemy.getEnemy()){
-            for(int i = 0; i < num; i++){
+        for(EnemyManager e : enemy.getEnemy()){
+        if(!e.boss){
+            circle(16, e);
+        }
+        if(e.boss){
+            if(e.bulletPattern == 1){
+               circle(64, e);
+              
+            }
+            if(e.bulletPattern == 2){
+                spiral(8, e);
+            }
+            if(e.bulletPattern == 3){
+                target(16, e);
+            }
+            if(e.bulletPattern == 4){
+                fastShooting = true;
+                laser(1, e);
+            }
+            if(e.bulletPattern != 4){
+                fastShooting = false;
+            }
+        }
+        }
+    }
+
+    public void circle(int num, EnemyManager e){
+        for(int i = 0; i < num; i++){
         double angle = i * 2 * Math.PI / num;
-        if(!enemyManager.boss){
-        bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
+        bullets.add(new Bullet(e.enemyX - p.tileSize/2, e.enemyY, bulletImage, p, enemy, e, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
         }
-        if(enemyManager.boss){
-        num = 32;
-            if(enemyManager.bulletPattern == 1){
-                bullets.add(new Bullet(enemyManager.enemyX - p.tileSize/2, enemyManager.enemyY, bulletImage, p, enemy, enemyManager, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
-            }
-            if(enemyManager.bulletPattern == 2){
-                System.out.println("2");
-            }
-            if(enemyManager.bulletPattern == 3){
-                System.out.println("3");
-            }
-            if(enemyManager.bulletPattern == 4){
-                System.out.println("4");
-            }
-        }
-        }
+}
+
+    public void spiral(int num, EnemyManager e){
+        for(int i = 0; i < num; i++){
+        double angle = spiralRotation + i * 2 * Math.PI /  num;
+        Bullet b = new Bullet(e.enemyX - p.tileSize/2, e.enemyY, bulletImage, p, enemy, e, angle, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster);
+        b.isSpinning = true;
+        b.centerX = e.enemyX;
+        b.centerY = e.enemyY;
+        b.angle = angle;
+        b.radius = 50;
+        b.rotationSpeed = 0.025;
+        b.outwardSpeed = 1;
+        bullets.add(b);
     }
+
+}
+    public void laser(int num, EnemyManager e){
+     for (int i = 0; i < num; i++) { 
+    double dx = player.x - enemyManager.enemyX;
+    double dy = player.y - enemyManager.enemyY;
+    double angle = Math.atan2(dy, dx);
+    bullets.add(new Bullet(e.enemyX - p.tileSize/2, e.enemyY, bulletImage, p, enemy, e, angle, player, Bullet.Type.ENEMYLASER, whitemonstermanager, whitemonster));
+    }    
     }
+
+public void target(int num, EnemyManager e){
+    double dx = player.x - e.enemyX;
+    double dy = player.y - e.enemyY;
+    double angle = Math.atan2(dy, dx);
+    for (int i = 0; i < num; i++) {
+        double spread = (i - num / 2.0) * 0.1;
+        bullets.add(new Bullet(e.enemyX - p.tileSize/2, e.enemyY, bulletImage, p, enemy, e, angle + spread, player, Bullet.Type.ENEMY, whitemonstermanager, whitemonster));
+}
+}
     
     public void draw(Graphics2D g2){
         ArrayList<Bullet> bulletsCopy = new ArrayList<>(bullets);
         for (Bullet b: bulletsCopy){
+            if (b == null) continue;
             if(b.bulletActive){
                 if(b.isEnemyBullet){
                     g2.drawImage(b.image, (int)b.bulletx, (int)b.bullety, bulletwidth, bulletheight, null);

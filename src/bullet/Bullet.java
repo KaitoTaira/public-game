@@ -24,7 +24,13 @@ public class Bullet {
     public double dx;
     public double dy;
     public double distance;
-   
+    public boolean isSpinning = false;
+    public double centerX, centerY;
+    public double angle;
+    public double radius;
+    public double rotationSpeed;
+    public double outwardSpeed; 
+    public double centerAngle;
 
     Panel panel;
     Enemy enemy;
@@ -34,7 +40,7 @@ public class Bullet {
     WhiteMonster whitemonster;
 
     public enum Type{
-         PLAYER, ENEMY, PLAYERLEFT, PLAYERRIGHT
+         PLAYER, ENEMY, PLAYERLEFT, PLAYERRIGHT, ENEMYLASER
     }
     public Type type;
     public Type getType() { return type; }
@@ -57,6 +63,12 @@ public class Bullet {
             dy = Math.sin(angle) * speed;
             this.isEnemyBullet = true;
         }
+        else if(type == Type.ENEMYLASER){
+            dx = Math.cos(angle) * speed * 3;
+            dy = Math.sin(angle) * speed * 3;
+            this.isEnemyBullet = true;
+
+        }
         else if(type == Type.PLAYERLEFT){
             dx = Math.cos(4 * Math.PI /3) * speed * 7/2;
             dy = Math.sin(4 *Math.PI /3) * speed * 7/2;
@@ -73,9 +85,22 @@ public class Bullet {
     }
 
     public void update(){
-        
+        if (isSpinning) {
+            for(EnemyManager e : enemy.getEnemy()){
+        double dx = player.x - e.enemyX;
+        double dy = player.y - e.enemyY;
+        double centerAngle = Math.atan2(dy, dx);
+        centerX += Math.cos(centerAngle) * speed * 2;
+        centerY += Math.sin(centerAngle) * speed * 2;
+            }
+        angle += rotationSpeed;
+        radius += outwardSpeed;
+        bulletx = centerX + Math.cos(angle) * radius;
+        bullety = centerY + Math.sin(angle) * radius;
+    } else {
         bulletx += dx;
         bullety += dy;
+    }
         if((bullety > 576 || bullety < -100) || (bulletx < -100 || bulletx > 576)){
             bulletActive = false;
         }

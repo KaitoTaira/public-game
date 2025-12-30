@@ -82,17 +82,17 @@ public class EnemyManager {
         else if(enemyY >= 100){
             enemyY = 100;
         }
-        if(t >= 3 * second){
+        if(t >= 1 * second){
             move = (int)(Math.random() * 3) + 1;
             t = 0;
         }
         if(move == 1){
             bossLeft();
-            bulletPattern = (int)(Math.random() * 5) + 1;
+            bulletPattern = 2;
         }
         if(move == 2){
             bossRight();
-            bulletPattern = (int)(Math.random() * 5) + 1;
+            bulletPattern = 2;
         }
         
     }
