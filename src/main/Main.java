@@ -12,12 +12,9 @@ public class Main {
 
         Panel gamePanel = new Panel();
         window.add(gamePanel);
-
         window.pack();
-
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
         gamePanel.startGameThread();
 
     }

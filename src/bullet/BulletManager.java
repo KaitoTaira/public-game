@@ -63,13 +63,22 @@ public class BulletManager{
         
         if(player.shoot && cooldown == 0){
             playerShoot();
+            if(player.playerActive){
+            p.playSE(1);
+            }
             cooldown = cooldownMax;
         }
         if((timer % (5) == 0) && fastShooting){
+            if(player.playerActive){
             enemyShoot();
+            p.playSE(0);
+            }
         }
         else if(!fastShooting && (timer % (1 * second) == 0)){
+            if(player.playerActive){
             enemyShoot();
+            p.playSE(0);
+          }
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
             Bullet b = bullets.get(i);

@@ -18,7 +18,8 @@ public class Bullet {
     public double bullety;
     public int bulletwidth = 100;
     public int bulletheight = 100;
-    public int speed = 2;
+    public int playerSpeed = 10;
+    public int enemySpeed = 2;
     public boolean bulletActive;
     public boolean isEnemyBullet;
     public double dx;
@@ -59,27 +60,27 @@ public class Bullet {
         this.whitemonstermanager = whitemonstermanager;
 
         if(type == Type.ENEMY){
-            dx = Math.cos(angle) * speed;
-            dy = Math.sin(angle) * speed;
+            dx = Math.cos(angle) * enemySpeed;
+            dy = Math.sin(angle) * enemySpeed;
             this.isEnemyBullet = true;
         }
         else if(type == Type.ENEMYLASER){
-            dx = Math.cos(angle) * speed * 3;
-            dy = Math.sin(angle) * speed * 3;
+            dx = Math.cos(angle) * enemySpeed * 3;
+            dy = Math.sin(angle) * enemySpeed * 3;
             this.isEnemyBullet = true;
 
         }
         else if(type == Type.PLAYERLEFT){
-            dx = Math.cos(4 * Math.PI /3) * speed * 7/2;
-            dy = Math.sin(4 *Math.PI /3) * speed * 7/2;
+            dx = Math.cos(4 * Math.PI /3) * playerSpeed;
+            dy = Math.sin(4 *Math.PI /3) * playerSpeed;
         }
         else if(type == Type.PLAYERRIGHT){
-            dx = Math.cos(5 * Math.PI /3) * speed * 7/2;
-            dy = Math.sin(5 * Math.PI /3) * speed * 7/2;
+            dx = Math.cos(5 * Math.PI /3) * playerSpeed;
+            dy = Math.sin(5 * Math.PI /3) * playerSpeed;
         }
         else{
             dx = 0;
-            dy = -7;
+            dy = -playerSpeed;
             this.isEnemyBullet = false;
         }
     }
@@ -90,8 +91,8 @@ public class Bullet {
         double dx = player.x - e.enemyX;
         double dy = player.y - e.enemyY;
         double centerAngle = Math.atan2(dy, dx);
-        centerX += Math.cos(centerAngle) * speed * 2;
-        centerY += Math.sin(centerAngle) * speed * 2;
+        centerX += Math.cos(centerAngle) * enemySpeed * 2;
+        centerY += Math.sin(centerAngle) * enemySpeed * 2;
             }
         angle += rotationSpeed;
         radius += outwardSpeed;

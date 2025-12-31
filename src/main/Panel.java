@@ -26,11 +26,10 @@ public class Panel extends JPanel implements Runnable{
     public int fps = 60;
 
     Input input = new Input();
+    Sound sound = new Sound();
     Player player = new Player(this, input);
-    
     public int startX = player.x;
     public int startY = player.y;
-    
     EnemyManager enemyManager = new EnemyManager(startX, startY, null, this, EnemyManager.Type.LEFT, false);
     Enemy enemy = new Enemy(this, enemyManager);
     public int enemyStartX = enemy.x;
@@ -40,11 +39,7 @@ public class Panel extends JPanel implements Runnable{
     Bullet bullet = new Bullet(startX, startY, null, this, enemy, enemyManager, 90, player, Bullet.Type.PLAYER, whiteMonsterManager, whitemonster);
     BulletManager bulletManager = new BulletManager(this, player, bullet, enemyManager, enemy, whiteMonsterManager);
     
-    
-    
     Thread gameThread;
-
-    
 
     Background bg = new Background(this, player);
 
@@ -59,6 +54,8 @@ public class Panel extends JPanel implements Runnable{
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
+        playMusic(2);
+        
     }
 
     @Override
@@ -115,5 +112,21 @@ public class Panel extends JPanel implements Runnable{
             bg.end(g2);
         }
         g2.dispose();
+    }
+
+    public void playMusic(int i){
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+
+    }
+
+    public void stopMusic(){
+        sound.stop();
+    }
+
+    public void playSE(int i){
+        sound.setFile(i);
+        sound.play();
     }
 }
