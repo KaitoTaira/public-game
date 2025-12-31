@@ -88,11 +88,13 @@ public class EnemyManager {
         }
         if(move == 1){
             bossLeft();
-            bulletPattern = 2;
+            bulletPattern = (int)(Math.random() * 5)+1;
+          
         }
         if(move == 2){
             bossRight();
-            bulletPattern = 2;
+            bulletPattern = (int)(Math.random() * 5)+1;
+            
         }
         
     }

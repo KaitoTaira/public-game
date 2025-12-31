@@ -136,7 +136,7 @@ public class Bullet {
         double playerDistanceY = playerCenterY - bulletCenterY;
         this.distance = Math.sqrt((playerDistanceX * playerDistanceX) + (playerDistanceY * playerDistanceY));
         if(distance < 8 && isEnemyBullet){
-            // player.playerActive = false;
+            player.playerActive = false;
             bulletActive = false;
             }
     }

@@ -142,8 +142,8 @@ public class BulletManager{
 }
     public void laser(int num, EnemyManager e){
      for (int i = 0; i < num; i++) { 
-    double dx = player.x - enemyManager.enemyX;
-    double dy = player.y - enemyManager.enemyY;
+    double dx = player.x - e.enemyX;
+    double dy = player.y - e.enemyY;
     double angle = Math.atan2(dy, dx);
     bullets.add(new Bullet(e.enemyX - p.tileSize/2, e.enemyY, bulletImage, p, enemy, e, angle, player, Bullet.Type.ENEMYLASER, whitemonstermanager, whitemonster));
     }    
