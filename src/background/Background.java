@@ -19,7 +19,7 @@ Panel panel;
         this.panel = panel;
         this.player = player;
 
-        setDefaultValues();
+      
     }
 
     public void getBackgroundImage(){
