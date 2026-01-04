@@ -71,13 +71,11 @@ public class BulletManager{
         if((timer % (5) == 0) && fastShooting){
             if(player.playerActive){
             enemyShoot();
-            p.playSE(0);
             }
         }
         else if(!fastShooting && (timer % (1 * second) == 0)){
             if(player.playerActive){
             enemyShoot();
-            p.playSE(0);
           }
         }
         for (int i = bullets.size()-1; i >= 0; i--) {
@@ -104,21 +102,26 @@ public class BulletManager{
         for(EnemyManager e : enemy.getEnemy()){
         if(!e.boss){
             circle(16, e);
+            p.playSE(0);
         }
         if(e.boss){
             if(e.bulletPattern == 1){
                circle(64, e);
+               p.playSE(0);
               
             }
             if(e.bulletPattern == 2){
                 spiral(8, e);
+                p.playSE(0);
             }
             if(e.bulletPattern == 3){
                 target(16, e);
+                p.playSE(0);
             }
             if(e.bulletPattern == 4){
                 fastShooting = true;
                 laser(1, e);
+                p.playSE(0);
             }
             if(e.bulletPattern != 4){
                 fastShooting = false;

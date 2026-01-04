@@ -19,7 +19,7 @@ Panel panel;
         this.panel = panel;
         this.player = player;
 
-      
+                                
     }
 
     public void getBackgroundImage(){

@@ -1,7 +1,6 @@
 package main;
 
 import java.net.URL;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -12,9 +11,12 @@ public class Sound {
     URL soundURL[] = new URL[10];
 
     public Sound(){
+        new Thread(() -> {
+        System.out.println("sound");
         soundURL[0] = getClass().getResource("/sound/Enemy.wav");
         soundURL[1] = getClass().getResource("/sound/Player.wav");
         soundURL[2] = getClass().getResource("/sound/Music.wav");
+        }).start();
          
     }
 

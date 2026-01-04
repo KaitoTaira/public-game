@@ -54,7 +54,7 @@ public class Panel extends JPanel implements Runnable{
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
-        // playMusic(2);
+        playMusic(2);
         
     }
 
@@ -110,6 +110,7 @@ public class Panel extends JPanel implements Runnable{
         
         if(player.playerActive == false){
             bg.end(g2);
+            stopMusic();
         }
         g2.dispose();
     }
