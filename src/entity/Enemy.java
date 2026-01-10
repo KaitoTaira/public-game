@@ -33,8 +33,10 @@ public class Enemy extends Entity{
 
     public void update(){
         timer ++;
-        if(enemyManager.boss){
+         for (EnemyManager e: enemy){
+        if(e.boss){
             bossTimer = bossTimer - (1.0/60);
+        }
         }
         if(timer == 30){
             enemy.add(new EnemyManager((int)(Math.random()*510), -((int) (Math.random() * 200 + 100)), enemyImage, panel, EnemyManager.Type.LEFT, false));
@@ -131,11 +133,11 @@ public class Enemy extends Entity{
 
     public void draw(Graphics2D g2){
         for (EnemyManager e: enemy){
+            Font font = new Font("Arial", Font.BOLD, 20);
+            g2.setFont(font);
             e.draw(g2);
             if(timer > 30 * second && timer < 90 * second){
             g2.fillRect(10, 10, e.health, 10);
-            Font font = new Font("Arial", Font.BOLD, 20);
-            g2.setFont(font);
             g2.drawString(String.valueOf((int)bossTimer), 10, 50);
            }
            
