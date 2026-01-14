@@ -138,7 +138,7 @@ public class Enemy extends Entity{
             e.draw(g2);
             if(timer > 30 * second && timer < 90 * second){
             g2.fillRect(10, 10, e.health, 10);
-            g2.drawString(String.valueOf((int)bossTimer), 10, 50);
+            // g2.drawString(String.valueOf((int)bossTimer), 10, 50);
            }
            
         }
