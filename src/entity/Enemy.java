@@ -20,6 +20,7 @@ public class Enemy extends Entity{
     public int timer = 0;
     public int second = 60;
     public double bossTimer = 60;
+    Font font = new Font("Arial", Font.BOLD, 20);
     
 
     public Enemy(Panel panel, EnemyManager enemyManager){
@@ -133,7 +134,6 @@ public class Enemy extends Entity{
 
     public void draw(Graphics2D g2){
         for (EnemyManager e: enemy){
-            Font font = new Font("Arial", Font.BOLD, 20);
             g2.setFont(font);
             e.draw(g2);
             if(timer > 30 * second && timer < 90 * second){
