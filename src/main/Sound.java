@@ -14,7 +14,7 @@ public class Sound {
         new Thread(() -> {
         soundURL[0] = getClass().getResource("/sound/Enemy.wav");
         soundURL[1] = getClass().getResource("/sound/Player.wav");
-        soundURL[2] = getClass().getResource("/sound/Music.wav");
+        // soundURL[2] = getClass().getResource("/sound/Music.wav");
         }).start();
          
     }

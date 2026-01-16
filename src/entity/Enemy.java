@@ -2,7 +2,6 @@ package entity;
 
 import bullet.Bullet;
 import bullet.BulletManager;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -20,7 +19,7 @@ public class Enemy extends Entity{
     public int timer = 0;
     public int second = 60;
     public double bossTimer = 60;
-    Font font = new Font("Arial", Font.BOLD, 20);
+    // Font font = new Font("Arial", Font.BOLD, 20);
     
 
     public Enemy(Panel panel, EnemyManager enemyManager){
@@ -134,7 +133,7 @@ public class Enemy extends Entity{
 
     public void draw(Graphics2D g2){
         for (EnemyManager e: enemy){
-            g2.setFont(font);
+            // g2.setFont(font);
             e.draw(g2);
             if(timer > 30 * second && timer < 90 * second){
             g2.fillRect(10, 10, e.health, 10);
